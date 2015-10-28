@@ -1,4 +1,4 @@
-package model;
+package model.petrinet;
 
 import java.util.ArrayList;
 
