@@ -1,0 +1,26 @@
+@namespace(
+	uri="http://a.b.c/x/y/Z",
+	prefix="p")
+	
+package petrinet;
+
+class NamedElement {
+	attr String name;
+}
+
+class Transition extends NamedElement {
+	ref Place[*]#pret prep; 
+	ref Place[*]#postt postp;
+	ref Net[1]#transitions net;
+}
+
+class Place extends NamedElement {
+ 	ref Transition[*]#prep pret;
+ 	ref Transition[*]#postp postt;
+ 	ref Net[1]#places net;
+}
+
+class Net {
+	val Place[*]#net places;
+	val Transition[*]#net transitions;
+}

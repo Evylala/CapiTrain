@@ -1,4 +1,6 @@
-@namespace(uri="http://a.b.c/x/y/Z", prefix="p")
+@namespace(
+	uri="http://a.b.c/x/y/Z", 
+	prefix="p")
 
 package statechart;
 
