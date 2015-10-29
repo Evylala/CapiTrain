@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:p="http://a.b.c/x/y/Z">
+  <p:Basic name="E10"/>
+  <p:Basic name="E0"/>
+  <p:Basic name="E1"/>
+  <p:Basic name="E2"/>
+  <p:Basic name="E3"/>
+  <p:Basic name="E4"/>
+  <p:Basic name="E5"/>
+  <p:Basic name="E6"/>
+  <p:Basic name="E7"/>
+  <p:Basic name="E8"/>
+  <p:Basic name="E9"/>
+</xmi:XMI>

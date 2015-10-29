@@ -10,3 +10,12 @@ rule Transition2HyperEdge {
 	    	name <- t.name
 	    )
 }
+
+rule Place2Basic {
+	from
+		p: petrinet!Place
+	to 
+		b: statechart!Basic (
+			name <- p.name
+		)
+}
