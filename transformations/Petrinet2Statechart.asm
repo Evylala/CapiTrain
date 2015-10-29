@@ -41,7 +41,35 @@
 		<constant value="NTransientLink;.getNamedTargetFromSource(JS):J"/>
 		<constant value="name"/>
 		<constant value="__matcher__"/>
+		<constant value="A.__matchTransition2HyperEdge():V"/>
 		<constant value="__exec__"/>
+		<constant value="Transition2HyperEdge"/>
+		<constant value="NTransientLinkSet;.getLinksByRule(S):QNTransientLink;"/>
+		<constant value="A.__applyTransition2HyperEdge(NTransientLink;):V"/>
+		<constant value="__matchTransition2HyperEdge"/>
+		<constant value="Transition"/>
+		<constant value="petrinet"/>
+		<constant value="input"/>
+		<constant value="MMOF!Classifier;.allInstancesFrom(S):QJ"/>
+		<constant value="TransientLink"/>
+		<constant value="NTransientLink;.setRule(MATL!Rule;):V"/>
+		<constant value="t"/>
+		<constant value="NTransientLink;.addSourceElement(SJ):V"/>
+		<constant value="h"/>
+		<constant value="HyperEdge"/>
+		<constant value="statechart"/>
+		<constant value="NTransientLink;.addTargetElement(SJ):V"/>
+		<constant value="NTransientLinkSet;.addLink2(NTransientLink;B):V"/>
+		<constant value="9:6-11:7"/>
+		<constant value="__applyTransition2HyperEdge"/>
+		<constant value="NTransientLink;"/>
+		<constant value="NTransientLink;.getSourceElement(S):J"/>
+		<constant value="NTransientLink;.getTargetElement(S):J"/>
+		<constant value="3"/>
+		<constant value="10:15-10:16"/>
+		<constant value="10:15-10:21"/>
+		<constant value="10:7-10:21"/>
+		<constant value="link"/>
 	</cp>
 	<field name="1" type="2"/>
 	<field name="3" type="4"/>
@@ -155,23 +183,114 @@
 		<parameters>
 		</parameters>
 		<code>
+			<getasm/>
+			<pcall arg="40"/>
 		</code>
 		<linenumbertable>
 		</linenumbertable>
 		<localvariabletable>
-			<lve slot="0" name="17" begin="0" end="-1"/>
+			<lve slot="0" name="17" begin="0" end="1"/>
 		</localvariabletable>
 	</operation>
-	<operation name="40">
+	<operation name="41">
 		<context type="6"/>
 		<parameters>
 		</parameters>
 		<code>
+			<getasm/>
+			<get arg="1"/>
+			<push arg="42"/>
+			<call arg="43"/>
+			<iterate/>
+			<store arg="19"/>
+			<getasm/>
+			<load arg="19"/>
+			<pcall arg="44"/>
+			<enditerate/>
 		</code>
 		<linenumbertable>
 		</linenumbertable>
 		<localvariabletable>
-			<lve slot="0" name="17" begin="0" end="-1"/>
+			<lve slot="1" name="33" begin="5" end="8"/>
+			<lve slot="0" name="17" begin="0" end="9"/>
+		</localvariabletable>
+	</operation>
+	<operation name="45">
+		<context type="6"/>
+		<parameters>
+		</parameters>
+		<code>
+			<push arg="46"/>
+			<push arg="47"/>
+			<findme/>
+			<push arg="48"/>
+			<call arg="49"/>
+			<iterate/>
+			<store arg="19"/>
+			<getasm/>
+			<get arg="1"/>
+			<push arg="50"/>
+			<push arg="8"/>
+			<new/>
+			<dup/>
+			<push arg="42"/>
+			<pcall arg="51"/>
+			<dup/>
+			<push arg="52"/>
+			<load arg="19"/>
+			<pcall arg="53"/>
+			<dup/>
+			<push arg="54"/>
+			<push arg="55"/>
+			<push arg="56"/>
+			<new/>
+			<pcall arg="57"/>
+			<pusht/>
+			<pcall arg="58"/>
+			<enditerate/>
+		</code>
+		<linenumbertable>
+			<lne id="59" begin="19" end="24"/>
+		</linenumbertable>
+		<localvariabletable>
+			<lve slot="1" name="52" begin="6" end="26"/>
+			<lve slot="0" name="17" begin="0" end="27"/>
+		</localvariabletable>
+	</operation>
+	<operation name="60">
+		<context type="6"/>
+		<parameters>
+			<parameter name="19" type="61"/>
+		</parameters>
+		<code>
+			<load arg="19"/>
+			<push arg="52"/>
+			<call arg="62"/>
+			<store arg="29"/>
+			<load arg="19"/>
+			<push arg="54"/>
+			<call arg="63"/>
+			<store arg="64"/>
+			<load arg="64"/>
+			<dup/>
+			<getasm/>
+			<load arg="29"/>
+			<get arg="38"/>
+			<call arg="30"/>
+			<set arg="38"/>
+			<pop/>
+		</code>
+		<linenumbertable>
+			<lne id="65" begin="11" end="11"/>
+			<lne id="66" begin="11" end="12"/>
+			<lne id="67" begin="9" end="14"/>
+			<lne id="59" begin="8" end="15"/>
+		</linenumbertable>
+		<localvariabletable>
+			<lve slot="3" name="54" begin="7" end="15"/>
+			<lve slot="2" name="52" begin="3" end="15"/>
+			<lve slot="0" name="17" begin="0" end="15"/>
+			<lve slot="1" name="68" begin="0" end="15"/>
 		</localvariabletable>
 	</operation>
 </asm>
