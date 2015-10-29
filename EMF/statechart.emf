@@ -1,5 +1,6 @@
 @namespace(uri="http://a.b.c/x/y/Z", prefix="p")
-package model.statechart;
+
+package statechart;
 
 class Statechart {
 	val AND[1] topState;
@@ -24,7 +25,6 @@ abstract class Compound extends State {
 }
 
 class AND extends Compound {
-	/*ref Statechart[0..1]#topState rTopState;*/
 } 
 
 class OR extends Compound {

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="model.statechart" nsURI="http://a.b.c/x/y/Z" nsPrefix="p">
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="statechart" nsURI="http://a.b.c/x/y/Z" nsPrefix="p">
   <eClassifiers xsi:type="ecore:EClass" name="Statechart">
     <eStructuralFeatures xsi:type="ecore:EReference" name="topState" lowerBound="1"
         eType="#//AND" containment="true"/>
@@ -20,9 +20,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="contains" upperBound="-1"
         eType="#//State" containment="true" eOpposite="#//State/rcontains"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AND" eSuperTypes="#//Compound">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="rTopState" eType="#//Statechart"
-        eOpposite="#//Statechart/topState"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AND" eSuperTypes="#//Compound"/>
   <eClassifiers xsi:type="ecore:EClass" name="OR" eSuperTypes="#//Compound"/>
 </ecore:EPackage>
