@@ -1,3 +1,12 @@
 module Petrinet2Statechart;
 
 create OUT: statechart from input: petrinet;
+
+rule Place2Basic {
+	from
+		p: petrinet!Place
+	to 
+		b: statechart!Basic (
+			name <- p.name
+		)
+}
