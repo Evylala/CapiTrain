@@ -1,14 +1,43 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:p="http://a.b.c/x/y/Z">
-  <p:Basic name="E10"/>
-  <p:Basic name="E0"/>
-  <p:Basic name="E1"/>
-  <p:Basic name="E2"/>
-  <p:Basic name="E3"/>
-  <p:Basic name="E4"/>
-  <p:Basic name="E5"/>
-  <p:Basic name="E6"/>
-  <p:Basic name="E7"/>
-  <p:Basic name="E8"/>
-  <p:Basic name="E9"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://a.b.c/x/y/Z">
+  <p:HyperEdge name="E11"/>
+  <p:HyperEdge name="E12"/>
+  <p:HyperEdge name="E13"/>
+  <p:HyperEdge name="E14"/>
+  <p:HyperEdge name="E15"/>
+  <p:HyperEdge name="E16"/>
+  <p:HyperEdge name="E17"/>
+  <p:OR>
+    <contains xsi:type="p:Basic" name="E10"/>
+  </p:OR>
+  <p:OR>
+    <contains xsi:type="p:Basic" name="E0"/>
+  </p:OR>
+  <p:OR>
+    <contains xsi:type="p:Basic" name="E1"/>
+  </p:OR>
+  <p:OR>
+    <contains xsi:type="p:Basic" name="E2"/>
+  </p:OR>
+  <p:OR>
+    <contains xsi:type="p:Basic" name="E3"/>
+  </p:OR>
+  <p:OR>
+    <contains xsi:type="p:Basic" name="E4"/>
+  </p:OR>
+  <p:OR>
+    <contains xsi:type="p:Basic" name="E5"/>
+  </p:OR>
+  <p:OR>
+    <contains xsi:type="p:Basic" name="E6"/>
+  </p:OR>
+  <p:OR>
+    <contains xsi:type="p:Basic" name="E7"/>
+  </p:OR>
+  <p:OR>
+    <contains xsi:type="p:Basic" name="E8"/>
+  </p:OR>
+  <p:OR>
+    <contains xsi:type="p:Basic" name="E9"/>
+  </p:OR>
 </xmi:XMI>

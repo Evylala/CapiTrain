@@ -2,20 +2,35 @@ module Petrinet2Statechart;
 
 create OUT: statechart from input: petrinet;
 
-rule Transition2HyperEdge {
+rule Pnet2Statechart {
 	from
-    	t: petrinet!Transition
-    to
-	    h:statechart!HyperEdge (
-	    	name <- t.name
-	    )
-}
-
-rule Place2Basic {
-	from
-		p: petrinet!Place
-	to 
-		b: statechart!Basic (
-			name <- p.name
+		pnet: petrinet!Net
+	to
+		schart: statechart!Statechart (
+			topState <- t	
+		),
+		t: statechart!AND (
+			name <- 'top' 
 		)
 }
+
+--rule Transition2HyperEdge {
+--	from
+--    	t: petrinet!Transition
+--    to
+--	    h:statechart!HyperEdge (
+--	    	name <- t.name
+--	    )
+--}
+--
+--rule Place2Basic {
+--	from
+--		p: petrinet!Place
+--	to 
+--		b: statechart!Basic (
+--			name <- p.name
+--		),
+--		o: statechart!OR (
+--			contains <- Set{b}
+--		)
+--}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<p:Statechart xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:p="http://a.b.c/x/y/Z">
+  <topState name="top"/>
+</p:Statechart>
