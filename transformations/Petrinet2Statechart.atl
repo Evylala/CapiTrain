@@ -11,22 +11,16 @@ rule Pnet2Statechart {
 		),
 		t: statechart!AND (
 			name <- 'top',
-			contains <- Set{ors}
+			contains <- Set{o}
 		),
-		ors : distinct statechart!OR foreach(place in pnet.places)(
+		o: distinct statechart!OR foreach(place in pnet.places) (
 			name <- '',
 			contains <- thisModule.Place2Basic(place)
+		),
+		h: distinct statechart!HyperEdge foreach(transition in pnet.transitions) (
+			name <- transition.name
 		)
 }
---
---lazy rule getBasics {
---	from 
---		p: petrinet!Place
---	to
---		b: statechart!Basic (
---			name <- p.name
---		)
---}
 
 lazy rule Place2Basic {
 	from
@@ -35,6 +29,15 @@ lazy rule Place2Basic {
 		b: statechart!Basic (
 			name <- p.name
 		)
+}
+
+lazy rule Transition2HyperEdge {
+	from
+    	t: petrinet!Transition
+    to
+	    h:statechart!HyperEdge (
+	    	name <- t.name
+	    )
 }
 
 --
@@ -47,14 +50,6 @@ lazy rule Place2Basic {
 --helper context statechart!OR def : getBasic (n: String) : statechart!Basic =
 --	;
 
---helper context statechart!Net def : getAllBasics : Set (statechart!Place) =
---	let basicsList : Set (statechart!Place) = 
---		self.getAllPlaces ()->select(currChild | currChild.oclIsTypeOf(statechart!Place))
---	in
---		basicsList->select(basic | basic.name=)
---		->union(leavesList->select(leaf | leaf.size = #medium))
---		->union(leavesList->select(leaf | leaf.size = #small))
---	;
 
 --rule Transition2HyperEdge {
 --	from

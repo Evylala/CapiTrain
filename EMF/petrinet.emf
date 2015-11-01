@@ -1,6 +1,6 @@
 @namespace(
 	uri="http://a.b.c/x/y/Z",
-	prefix="p")
+	prefix="pnet")
 	
 package petrinet;
 
