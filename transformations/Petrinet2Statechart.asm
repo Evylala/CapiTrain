@@ -131,12 +131,6 @@
 		<constant value="30:12-30:18"/>
 		<constant value="30:4-30:18"/>
 		<constant value="29:3-31:4"/>
-		<constant value="Transition2HyperEdge"/>
-		<constant value="Mpetrinet!Transition;"/>
-		<constant value="39:15-39:16"/>
-		<constant value="39:15-39:21"/>
-		<constant value="39:7-39:21"/>
-		<constant value="38:6-40:7"/>
 	</cp>
 	<field name="1" type="2"/>
 	<field name="3" type="4"/>
@@ -585,56 +579,6 @@
 			<lve slot="2" name="124" begin="18" end="30"/>
 			<lve slot="0" name="17" begin="0" end="30"/>
 			<lve slot="1" name="123" begin="0" end="30"/>
-		</localvariabletable>
-	</operation>
-	<operation name="130">
-		<context type="6"/>
-		<parameters>
-			<parameter name="19" type="131"/>
-		</parameters>
-		<code>
-			<getasm/>
-			<get arg="1"/>
-			<push arg="50"/>
-			<push arg="8"/>
-			<new/>
-			<dup/>
-			<push arg="130"/>
-			<pcall arg="51"/>
-			<dup/>
-			<push arg="58"/>
-			<load arg="19"/>
-			<pcall arg="53"/>
-			<dup/>
-			<push arg="64"/>
-			<push arg="66"/>
-			<push arg="56"/>
-			<new/>
-			<dup/>
-			<store arg="29"/>
-			<pcall arg="57"/>
-			<pushf/>
-			<pcall arg="67"/>
-			<load arg="29"/>
-			<dup/>
-			<getasm/>
-			<load arg="19"/>
-			<get arg="38"/>
-			<call arg="30"/>
-			<set arg="38"/>
-			<pop/>
-			<load arg="29"/>
-		</code>
-		<linenumbertable>
-			<lne id="132" begin="25" end="25"/>
-			<lne id="133" begin="25" end="26"/>
-			<lne id="134" begin="23" end="28"/>
-			<lne id="135" begin="22" end="29"/>
-		</linenumbertable>
-		<localvariabletable>
-			<lve slot="2" name="64" begin="18" end="30"/>
-			<lve slot="0" name="17" begin="0" end="30"/>
-			<lve slot="1" name="58" begin="0" end="30"/>
 		</localvariabletable>
 	</operation>
 </asm>

@@ -31,14 +31,6 @@ lazy rule Place2Basic {
 		)
 }
 
-lazy rule Transition2HyperEdge {
-	from
-    	t: petrinet!Transition
-    to
-	    h:statechart!HyperEdge (
-	    	name <- t.name
-	    )
-}
 
 --
 --helper context petrinet!Net def : getAllPlaces () : OrderedSet(petrinet!Place) =
@@ -49,25 +41,3 @@ lazy rule Transition2HyperEdge {
 
 --helper context statechart!OR def : getBasic (n: String) : statechart!Basic =
 --	;
-
-
---rule Transition2HyperEdge {
---	from
---    	t: petrinet!Transition
---    to
---	    h:statechart!HyperEdge (
---	    	name <- t.name
---	    )
---}
---
---rule Place2Basic {
---	from
---		p: petrinet!Place
---	to 
---		b: statechart!Basic (
---			name <- p.name
---		),
---		o: statechart!OR (
---			contains <- Set{b}
---		)
---}
