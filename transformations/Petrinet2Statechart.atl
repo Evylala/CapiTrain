@@ -19,15 +19,6 @@ rule Pnet2Statechart {
 		)
 }
 
-lazy rule Place2Basic {
-	from
-		p: petrinet!Place
-	to 
-		b: statechart!Basic (
-			name <- p.name
-		)
-}
-
 lazy rule Place2And {
 	from 
 		p: petrinet!Place
@@ -43,7 +34,10 @@ lazy rule Place2OR {
 	to
 		o: statechart!OR (
 			name <- '',
-			contains <- thisModule.Place2Basic(p)
+			contains <- Set{b}
+		),
+		b: statechart!Basic (
+			name <- p.name
 		)
 }
 
