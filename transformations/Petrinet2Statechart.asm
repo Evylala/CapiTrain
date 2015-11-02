@@ -61,22 +61,16 @@
 		<constant value="NTransientLink;.addTargetElement(SJ):V"/>
 		<constant value="t"/>
 		<constant value="AND"/>
-		<constant value="o"/>
-		<constant value="places"/>
-		<constant value="OR"/>
-		<constant value="CJ.including(J):CJ"/>
 		<constant value="h"/>
 		<constant value="transitions"/>
 		<constant value="HyperEdge"/>
+		<constant value="CJ.including(J):CJ"/>
 		<constant value="NTransientLinkSet;.addLink2(NTransientLink;B):V"/>
 		<constant value="9:3-11:4"/>
 		<constant value="12:3-15:4"/>
-		<constant value="16:46-16:50"/>
-		<constant value="16:46-16:57"/>
+		<constant value="16:58-16:62"/>
+		<constant value="16:58-16:74"/>
 		<constant value="16:3-19:4"/>
-		<constant value="20:58-20:62"/>
-		<constant value="20:58-20:74"/>
-		<constant value="20:3-22:4"/>
 		<constant value="__applyPnet2Statechart"/>
 		<constant value="NTransientLink;"/>
 		<constant value="NTransientLink;.getSourceElement(S):J"/>
@@ -84,53 +78,93 @@
 		<constant value="3"/>
 		<constant value="4"/>
 		<constant value="5"/>
-		<constant value="6"/>
 		<constant value="topState"/>
 		<constant value="top"/>
-		<constant value="Set"/>
+		<constant value="places"/>
+		<constant value="6"/>
+		<constant value="J.Place2OR(J):J"/>
 		<constant value="contains"/>
-		<constant value="7"/>
 		<constant value="CJ.asSequence():QJ"/>
-		<constant value="8"/>
+		<constant value="7"/>
 		<constant value="QJ.at(I):J"/>
-		<constant value="9"/>
-		<constant value=""/>
+		<constant value="8"/>
 		<constant value="B.not():B"/>
-		<constant value="66"/>
-		<constant value="J.Place2Basic(J):J"/>
-		<constant value="81"/>
+		<constant value="70"/>
+		<constant value="prep"/>
+		<constant value="J.Place2And(J):J"/>
+		<constant value="86"/>
+		<constant value="rcontains"/>
 		<constant value="I.+(I):I"/>
-		<constant value="113"/>
 		<constant value="10:16-10:17"/>
 		<constant value="10:4-10:17"/>
 		<constant value="13:12-13:17"/>
 		<constant value="13:4-13:17"/>
-		<constant value="14:20-14:21"/>
-		<constant value="14:16-14:22"/>
-		<constant value="14:4-14:22"/>
-		<constant value="17:12-17:14"/>
-		<constant value="17:4-17:14"/>
-		<constant value="18:16-18:26"/>
-		<constant value="18:39-18:44"/>
-		<constant value="18:16-18:45"/>
-		<constant value="18:4-18:45"/>
-		<constant value="21:12-21:22"/>
-		<constant value="21:12-21:27"/>
-		<constant value="21:4-21:27"/>
-		<constant value="place"/>
+		<constant value="14:16-14:20"/>
+		<constant value="14:16-14:27"/>
+		<constant value="14:43-14:53"/>
+		<constant value="14:63-14:64"/>
+		<constant value="14:43-14:65"/>
+		<constant value="14:16-14:66"/>
+		<constant value="14:4-14:66"/>
+		<constant value="17:12-17:22"/>
+		<constant value="17:12-17:27"/>
+		<constant value="17:4-17:27"/>
+		<constant value="18:17-18:27"/>
+		<constant value="18:38-18:48"/>
+		<constant value="18:38-18:53"/>
+		<constant value="18:17-18:54"/>
+		<constant value="18:4-18:54"/>
+		<constant value="p"/>
+		<constant value="transition"/>
 		<constant value="collection"/>
 		<constant value="counter"/>
-		<constant value="transition"/>
 		<constant value="link"/>
 		<constant value="Place2Basic"/>
 		<constant value="Mpetrinet!Place;"/>
-		<constant value="p"/>
 		<constant value="b"/>
 		<constant value="Basic"/>
-		<constant value="30:12-30:13"/>
-		<constant value="30:12-30:18"/>
-		<constant value="30:4-30:18"/>
-		<constant value="29:3-31:4"/>
+		<constant value="27:12-27:13"/>
+		<constant value="27:12-27:18"/>
+		<constant value="27:4-27:18"/>
+		<constant value="26:3-28:4"/>
+		<constant value="Place2And"/>
+		<constant value="a"/>
+		<constant value="AND transition"/>
+		<constant value="36:12-36:28"/>
+		<constant value="36:4-36:28"/>
+		<constant value="35:3-37:4"/>
+		<constant value="Place2OR"/>
+		<constant value="o"/>
+		<constant value="OR"/>
+		<constant value=""/>
+		<constant value="J.Place2Basic(J):J"/>
+		<constant value="45:12-45:14"/>
+		<constant value="45:4-45:14"/>
+		<constant value="46:16-46:26"/>
+		<constant value="46:39-46:40"/>
+		<constant value="46:16-46:41"/>
+		<constant value="46:4-46:41"/>
+		<constant value="44:3-47:4"/>
+		<constant value="Transition2HyperEdge"/>
+		<constant value="Mpetrinet!Transition;"/>
+		<constant value="55:12-55:13"/>
+		<constant value="55:12-55:18"/>
+		<constant value="55:4-55:18"/>
+		<constant value="56:17-56:27"/>
+		<constant value="56:38-56:39"/>
+		<constant value="56:38-56:44"/>
+		<constant value="56:17-56:45"/>
+		<constant value="56:4-56:45"/>
+		<constant value="54:3-57:4"/>
+		<constant value="isTheSame"/>
+		<constant value="0"/>
+		<constant value="post"/>
+		<constant value="J.=(J):J"/>
+		<constant value="62:2-62:6"/>
+		<constant value="62:2-62:11"/>
+		<constant value="62:2-62:16"/>
+		<constant value="62:19-62:20"/>
+		<constant value="62:2-62:20"/>
 	</cp>
 	<field name="1" type="2"/>
 	<field name="3" type="4"/>
@@ -327,214 +361,166 @@
 			<call arg="63"/>
 			<enditerate/>
 			<pcall arg="57"/>
-			<dup/>
-			<push arg="64"/>
-			<push arg="28"/>
-			<push arg="8"/>
-			<new/>
-			<load arg="19"/>
-			<get arg="65"/>
-			<iterate/>
-			<pop/>
-			<push arg="66"/>
-			<push arg="56"/>
-			<new/>
-			<call arg="63"/>
-			<enditerate/>
-			<pcall arg="57"/>
 			<pusht/>
-			<pcall arg="67"/>
+			<pcall arg="64"/>
 			<enditerate/>
 		</code>
 		<linenumbertable>
-			<lne id="68" begin="19" end="24"/>
-			<lne id="69" begin="25" end="30"/>
-			<lne id="70" begin="36" end="36"/>
-			<lne id="71" begin="36" end="37"/>
-			<lne id="72" begin="31" end="45"/>
-			<lne id="73" begin="51" end="51"/>
-			<lne id="74" begin="51" end="52"/>
-			<lne id="75" begin="46" end="60"/>
+			<lne id="65" begin="19" end="24"/>
+			<lne id="66" begin="25" end="30"/>
+			<lne id="67" begin="36" end="36"/>
+			<lne id="68" begin="36" end="37"/>
+			<lne id="69" begin="31" end="45"/>
 		</linenumbertable>
 		<localvariabletable>
-			<lve slot="1" name="52" begin="6" end="62"/>
-			<lve slot="0" name="17" begin="0" end="63"/>
+			<lve slot="1" name="52" begin="6" end="47"/>
+			<lve slot="0" name="17" begin="0" end="48"/>
 		</localvariabletable>
 	</operation>
-	<operation name="76">
+	<operation name="70">
 		<context type="6"/>
 		<parameters>
-			<parameter name="19" type="77"/>
+			<parameter name="19" type="71"/>
 		</parameters>
 		<code>
 			<load arg="19"/>
 			<push arg="52"/>
-			<call arg="78"/>
+			<call arg="72"/>
 			<store arg="29"/>
 			<load arg="19"/>
 			<push arg="54"/>
-			<call arg="79"/>
-			<store arg="80"/>
+			<call arg="73"/>
+			<store arg="74"/>
 			<load arg="19"/>
 			<push arg="58"/>
-			<call arg="79"/>
-			<store arg="81"/>
+			<call arg="73"/>
+			<store arg="75"/>
 			<load arg="19"/>
 			<push arg="60"/>
-			<call arg="79"/>
-			<store arg="82"/>
-			<load arg="19"/>
-			<push arg="64"/>
-			<call arg="79"/>
-			<store arg="83"/>
-			<load arg="80"/>
+			<call arg="73"/>
+			<store arg="76"/>
+			<load arg="74"/>
 			<dup/>
 			<getasm/>
-			<load arg="81"/>
+			<load arg="75"/>
 			<call arg="30"/>
-			<set arg="84"/>
+			<set arg="77"/>
 			<pop/>
-			<load arg="81"/>
+			<load arg="75"/>
 			<dup/>
 			<getasm/>
-			<push arg="85"/>
+			<push arg="78"/>
 			<call arg="30"/>
 			<set arg="38"/>
 			<dup/>
 			<getasm/>
-			<push arg="86"/>
+			<push arg="28"/>
 			<push arg="8"/>
 			<new/>
-			<load arg="82"/>
+			<load arg="29"/>
+			<get arg="79"/>
+			<iterate/>
+			<store arg="80"/>
+			<getasm/>
+			<load arg="80"/>
+			<call arg="81"/>
 			<call arg="63"/>
+			<enditerate/>
 			<call arg="30"/>
-			<set arg="87"/>
+			<set arg="82"/>
 			<pop/>
 			<pushi arg="19"/>
-			<store arg="88"/>
+			<store arg="80"/>
 			<load arg="29"/>
 			<get arg="61"/>
-			<call arg="89"/>
-			<store arg="90"/>
-			<load arg="82"/>
+			<call arg="83"/>
+			<store arg="84"/>
+			<load arg="76"/>
 			<iterate/>
-			<load arg="90"/>
-			<load arg="88"/>
-			<call arg="91"/>
-			<store arg="92"/>
+			<load arg="84"/>
+			<load arg="80"/>
+			<call arg="85"/>
+			<store arg="86"/>
 			<dup/>
 			<getasm/>
-			<push arg="93"/>
-			<dup/>
-			<getasm/>
-			<get arg="3"/>
-			<call arg="20"/>
-			<call arg="94"/>
-			<if arg="95"/>
-			<load arg="88"/>
-			<call arg="91"/>
-			<call arg="30"/>
-			<set arg="38"/>
-			<dup/>
-			<getasm/>
-			<getasm/>
-			<load arg="92"/>
-			<call arg="96"/>
-			<dup/>
-			<getasm/>
-			<get arg="3"/>
-			<call arg="20"/>
-			<call arg="94"/>
-			<if arg="97"/>
-			<load arg="88"/>
-			<call arg="91"/>
-			<call arg="30"/>
-			<set arg="87"/>
-			<pop/>
-			<load arg="88"/>
-			<pushi arg="19"/>
-			<call arg="98"/>
-			<store arg="88"/>
-			<enditerate/>
-			<pushi arg="19"/>
-			<store arg="88"/>
-			<load arg="29"/>
-			<get arg="65"/>
-			<call arg="89"/>
-			<store arg="90"/>
-			<load arg="83"/>
-			<iterate/>
-			<load arg="90"/>
-			<load arg="88"/>
-			<call arg="91"/>
-			<store arg="92"/>
-			<dup/>
-			<getasm/>
-			<load arg="92"/>
+			<load arg="86"/>
 			<get arg="38"/>
 			<dup/>
 			<getasm/>
 			<get arg="3"/>
 			<call arg="20"/>
-			<call arg="94"/>
-			<if arg="99"/>
-			<load arg="88"/>
-			<call arg="91"/>
+			<call arg="87"/>
+			<if arg="88"/>
+			<load arg="80"/>
+			<call arg="85"/>
 			<call arg="30"/>
 			<set arg="38"/>
+			<dup/>
+			<getasm/>
+			<getasm/>
+			<load arg="86"/>
+			<get arg="89"/>
+			<call arg="90"/>
+			<dup/>
+			<getasm/>
+			<get arg="3"/>
+			<call arg="20"/>
+			<call arg="87"/>
+			<if arg="91"/>
+			<load arg="80"/>
+			<call arg="85"/>
+			<call arg="30"/>
+			<set arg="92"/>
 			<pop/>
-			<load arg="88"/>
+			<load arg="80"/>
 			<pushi arg="19"/>
-			<call arg="98"/>
-			<store arg="88"/>
+			<call arg="93"/>
+			<store arg="80"/>
 			<enditerate/>
 		</code>
 		<linenumbertable>
-			<lne id="100" begin="23" end="23"/>
-			<lne id="101" begin="21" end="25"/>
-			<lne id="68" begin="20" end="26"/>
-			<lne id="102" begin="30" end="30"/>
-			<lne id="103" begin="28" end="32"/>
-			<lne id="104" begin="38" end="38"/>
-			<lne id="105" begin="35" end="39"/>
-			<lne id="106" begin="33" end="41"/>
-			<lne id="69" begin="27" end="42"/>
-			<lne id="70" begin="45" end="45"/>
-			<lne id="71" begin="45" end="46"/>
-			<lne id="107" begin="57" end="57"/>
-			<lne id="108" begin="55" end="67"/>
-			<lne id="109" begin="70" end="70"/>
-			<lne id="110" begin="71" end="71"/>
-			<lne id="111" begin="70" end="72"/>
-			<lne id="112" begin="68" end="82"/>
-			<lne id="72" begin="43" end="88"/>
-			<lne id="73" begin="91" end="91"/>
-			<lne id="74" begin="91" end="92"/>
-			<lne id="113" begin="103" end="103"/>
-			<lne id="114" begin="103" end="104"/>
-			<lne id="115" begin="101" end="114"/>
-			<lne id="75" begin="89" end="120"/>
+			<lne id="94" begin="19" end="19"/>
+			<lne id="95" begin="17" end="21"/>
+			<lne id="65" begin="16" end="22"/>
+			<lne id="96" begin="26" end="26"/>
+			<lne id="97" begin="24" end="28"/>
+			<lne id="98" begin="34" end="34"/>
+			<lne id="99" begin="34" end="35"/>
+			<lne id="100" begin="38" end="38"/>
+			<lne id="101" begin="39" end="39"/>
+			<lne id="102" begin="38" end="40"/>
+			<lne id="103" begin="31" end="42"/>
+			<lne id="104" begin="29" end="44"/>
+			<lne id="66" begin="23" end="45"/>
+			<lne id="67" begin="48" end="48"/>
+			<lne id="68" begin="48" end="49"/>
+			<lne id="105" begin="60" end="60"/>
+			<lne id="106" begin="60" end="61"/>
+			<lne id="107" begin="58" end="71"/>
+			<lne id="108" begin="74" end="74"/>
+			<lne id="109" begin="75" end="75"/>
+			<lne id="110" begin="75" end="76"/>
+			<lne id="111" begin="74" end="77"/>
+			<lne id="112" begin="72" end="87"/>
+			<lne id="69" begin="46" end="93"/>
 		</linenumbertable>
 		<localvariabletable>
-			<lve slot="9" name="116" begin="54" end="82"/>
-			<lve slot="8" name="117" begin="48" end="88"/>
-			<lve slot="7" name="118" begin="44" end="88"/>
-			<lve slot="9" name="119" begin="100" end="114"/>
-			<lve slot="8" name="117" begin="94" end="120"/>
-			<lve slot="7" name="118" begin="90" end="120"/>
-			<lve slot="3" name="54" begin="7" end="120"/>
-			<lve slot="4" name="58" begin="11" end="120"/>
-			<lve slot="5" name="60" begin="15" end="120"/>
-			<lve slot="6" name="64" begin="19" end="120"/>
-			<lve slot="2" name="52" begin="3" end="120"/>
-			<lve slot="0" name="17" begin="0" end="120"/>
-			<lve slot="1" name="120" begin="0" end="120"/>
+			<lve slot="6" name="113" begin="37" end="41"/>
+			<lve slot="8" name="114" begin="57" end="87"/>
+			<lve slot="7" name="115" begin="51" end="93"/>
+			<lve slot="6" name="116" begin="47" end="93"/>
+			<lve slot="3" name="54" begin="7" end="93"/>
+			<lve slot="4" name="58" begin="11" end="93"/>
+			<lve slot="5" name="60" begin="15" end="93"/>
+			<lve slot="2" name="52" begin="3" end="93"/>
+			<lve slot="0" name="17" begin="0" end="93"/>
+			<lve slot="1" name="117" begin="0" end="93"/>
 		</localvariabletable>
 	</operation>
-	<operation name="121">
+	<operation name="118">
 		<context type="6"/>
 		<parameters>
-			<parameter name="19" type="122"/>
+			<parameter name="19" type="119"/>
 		</parameters>
 		<code>
 			<getasm/>
@@ -543,22 +529,22 @@
 			<push arg="8"/>
 			<new/>
 			<dup/>
-			<push arg="121"/>
+			<push arg="118"/>
 			<pcall arg="51"/>
 			<dup/>
-			<push arg="123"/>
+			<push arg="113"/>
 			<load arg="19"/>
 			<pcall arg="53"/>
 			<dup/>
-			<push arg="124"/>
-			<push arg="125"/>
+			<push arg="120"/>
+			<push arg="121"/>
 			<push arg="56"/>
 			<new/>
 			<dup/>
 			<store arg="29"/>
 			<pcall arg="57"/>
 			<pushf/>
-			<pcall arg="67"/>
+			<pcall arg="64"/>
 			<load arg="29"/>
 			<dup/>
 			<getasm/>
@@ -570,15 +556,209 @@
 			<load arg="29"/>
 		</code>
 		<linenumbertable>
-			<lne id="126" begin="25" end="25"/>
-			<lne id="127" begin="25" end="26"/>
-			<lne id="128" begin="23" end="28"/>
-			<lne id="129" begin="22" end="29"/>
+			<lne id="122" begin="25" end="25"/>
+			<lne id="123" begin="25" end="26"/>
+			<lne id="124" begin="23" end="28"/>
+			<lne id="125" begin="22" end="29"/>
 		</linenumbertable>
 		<localvariabletable>
-			<lve slot="2" name="124" begin="18" end="30"/>
+			<lve slot="2" name="120" begin="18" end="30"/>
 			<lve slot="0" name="17" begin="0" end="30"/>
-			<lve slot="1" name="123" begin="0" end="30"/>
+			<lve slot="1" name="113" begin="0" end="30"/>
+		</localvariabletable>
+	</operation>
+	<operation name="126">
+		<context type="6"/>
+		<parameters>
+			<parameter name="19" type="119"/>
+		</parameters>
+		<code>
+			<getasm/>
+			<get arg="1"/>
+			<push arg="50"/>
+			<push arg="8"/>
+			<new/>
+			<dup/>
+			<push arg="126"/>
+			<pcall arg="51"/>
+			<dup/>
+			<push arg="113"/>
+			<load arg="19"/>
+			<pcall arg="53"/>
+			<dup/>
+			<push arg="127"/>
+			<push arg="59"/>
+			<push arg="56"/>
+			<new/>
+			<dup/>
+			<store arg="29"/>
+			<pcall arg="57"/>
+			<pushf/>
+			<pcall arg="64"/>
+			<load arg="29"/>
+			<dup/>
+			<getasm/>
+			<push arg="128"/>
+			<call arg="30"/>
+			<set arg="38"/>
+			<pop/>
+			<load arg="29"/>
+		</code>
+		<linenumbertable>
+			<lne id="129" begin="25" end="25"/>
+			<lne id="130" begin="23" end="27"/>
+			<lne id="131" begin="22" end="28"/>
+		</linenumbertable>
+		<localvariabletable>
+			<lve slot="2" name="127" begin="18" end="29"/>
+			<lve slot="0" name="17" begin="0" end="29"/>
+			<lve slot="1" name="113" begin="0" end="29"/>
+		</localvariabletable>
+	</operation>
+	<operation name="132">
+		<context type="6"/>
+		<parameters>
+			<parameter name="19" type="119"/>
+		</parameters>
+		<code>
+			<getasm/>
+			<get arg="1"/>
+			<push arg="50"/>
+			<push arg="8"/>
+			<new/>
+			<dup/>
+			<push arg="132"/>
+			<pcall arg="51"/>
+			<dup/>
+			<push arg="113"/>
+			<load arg="19"/>
+			<pcall arg="53"/>
+			<dup/>
+			<push arg="133"/>
+			<push arg="134"/>
+			<push arg="56"/>
+			<new/>
+			<dup/>
+			<store arg="29"/>
+			<pcall arg="57"/>
+			<pushf/>
+			<pcall arg="64"/>
+			<load arg="29"/>
+			<dup/>
+			<getasm/>
+			<push arg="135"/>
+			<call arg="30"/>
+			<set arg="38"/>
+			<dup/>
+			<getasm/>
+			<getasm/>
+			<load arg="19"/>
+			<call arg="136"/>
+			<call arg="30"/>
+			<set arg="82"/>
+			<pop/>
+			<load arg="29"/>
+		</code>
+		<linenumbertable>
+			<lne id="137" begin="25" end="25"/>
+			<lne id="138" begin="23" end="27"/>
+			<lne id="139" begin="30" end="30"/>
+			<lne id="140" begin="31" end="31"/>
+			<lne id="141" begin="30" end="32"/>
+			<lne id="142" begin="28" end="34"/>
+			<lne id="143" begin="22" end="35"/>
+		</linenumbertable>
+		<localvariabletable>
+			<lve slot="2" name="133" begin="18" end="36"/>
+			<lve slot="0" name="17" begin="0" end="36"/>
+			<lve slot="1" name="113" begin="0" end="36"/>
+		</localvariabletable>
+	</operation>
+	<operation name="144">
+		<context type="6"/>
+		<parameters>
+			<parameter name="19" type="145"/>
+		</parameters>
+		<code>
+			<getasm/>
+			<get arg="1"/>
+			<push arg="50"/>
+			<push arg="8"/>
+			<new/>
+			<dup/>
+			<push arg="144"/>
+			<pcall arg="51"/>
+			<dup/>
+			<push arg="58"/>
+			<load arg="19"/>
+			<pcall arg="53"/>
+			<dup/>
+			<push arg="60"/>
+			<push arg="62"/>
+			<push arg="56"/>
+			<new/>
+			<dup/>
+			<store arg="29"/>
+			<pcall arg="57"/>
+			<pushf/>
+			<pcall arg="64"/>
+			<load arg="29"/>
+			<dup/>
+			<getasm/>
+			<load arg="19"/>
+			<get arg="38"/>
+			<call arg="30"/>
+			<set arg="38"/>
+			<dup/>
+			<getasm/>
+			<getasm/>
+			<load arg="19"/>
+			<get arg="89"/>
+			<call arg="90"/>
+			<call arg="30"/>
+			<set arg="92"/>
+			<pop/>
+			<load arg="29"/>
+		</code>
+		<linenumbertable>
+			<lne id="146" begin="25" end="25"/>
+			<lne id="147" begin="25" end="26"/>
+			<lne id="148" begin="23" end="28"/>
+			<lne id="149" begin="31" end="31"/>
+			<lne id="150" begin="32" end="32"/>
+			<lne id="151" begin="32" end="33"/>
+			<lne id="152" begin="31" end="34"/>
+			<lne id="153" begin="29" end="36"/>
+			<lne id="154" begin="22" end="37"/>
+		</linenumbertable>
+		<localvariabletable>
+			<lve slot="2" name="60" begin="18" end="38"/>
+			<lve slot="0" name="17" begin="0" end="38"/>
+			<lve slot="1" name="58" begin="0" end="38"/>
+		</localvariabletable>
+	</operation>
+	<operation name="155">
+		<context type="119"/>
+		<parameters>
+			<parameter name="19" type="4"/>
+		</parameters>
+		<code>
+			<load arg="156"/>
+			<get arg="89"/>
+			<get arg="157"/>
+			<load arg="19"/>
+			<call arg="158"/>
+		</code>
+		<linenumbertable>
+			<lne id="159" begin="0" end="0"/>
+			<lne id="160" begin="0" end="1"/>
+			<lne id="161" begin="0" end="2"/>
+			<lne id="162" begin="3" end="3"/>
+			<lne id="163" begin="0" end="4"/>
+		</linenumbertable>
+		<localvariabletable>
+			<lve slot="0" name="17" begin="0" end="4"/>
+			<lve slot="1" name="58" begin="0" end="4"/>
 		</localvariabletable>
 	</operation>
 </asm>

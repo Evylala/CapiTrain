@@ -37,11 +37,25 @@
       </contains>
     </topState>
   </schart:Statechart>
-  <schart:HyperEdge name="E11"/>
-  <schart:HyperEdge name="E12"/>
-  <schart:HyperEdge name="E13"/>
-  <schart:HyperEdge name="E14"/>
-  <schart:HyperEdge name="E15"/>
-  <schart:HyperEdge name="E16"/>
-  <schart:HyperEdge name="E17"/>
+  <schart:AND name="AND transition">
+    <contains xsi:type="schart:HyperEdge" name="E11"/>
+  </schart:AND>
+  <schart:AND name="AND transition">
+    <contains xsi:type="schart:HyperEdge" name="E12"/>
+  </schart:AND>
+  <schart:AND name="AND transition">
+    <contains xsi:type="schart:HyperEdge" name="E13"/>
+  </schart:AND>
+  <schart:AND name="AND transition">
+    <contains xsi:type="schart:HyperEdge" name="E14"/>
+  </schart:AND>
+  <schart:AND name="AND transition">
+    <contains xsi:type="schart:HyperEdge" name="E15"/>
+  </schart:AND>
+  <schart:AND name="AND transition">
+    <contains xsi:type="schart:HyperEdge" name="E16"/>
+  </schart:AND>
+  <schart:AND name="AND transition">
+    <contains xsi:type="schart:HyperEdge" name="E17"/>
+  </schart:AND>
 </xmi:XMI>
