@@ -1,3 +1,6 @@
+-- @path statechart=/CapiTrain/EMF/statechart.ecore
+-- @path petrinet=/CapiTrain/EMF/petrinet.ecore
+
 module Petrinet2Statechart;
 
 create OUT: statechart from input: petrinet;
