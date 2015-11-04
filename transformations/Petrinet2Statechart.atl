@@ -14,13 +14,46 @@ rule Pnet2Statechart {
 		),
 		t: statechart!AND (
 			name <- 'top',
-			contains <- pnet.places -> collect(p | thisModule.Place2OR(p))
-		),
-		h: distinct statechart!HyperEdge foreach(transition in pnet.transitions) (
-			name <- transition.name,
-			rcontains <- thisModule.Place2And(transition.prep)
+			contains <- pnet.transitions -> collect(s | pnet.transitions->asSequence()->iterate(t; 
+			f : petrinet!Transition = pnet.transitions.asSequence()->first() |
+					if t.prep.size() = 1
+						then
+							thisModule.Transition2State()
+						else
+							thisModule.Transition2State()
+					endif
+				)
+			)
 		)
 }
+
+lazy rule Transition2State {
+	from
+		t:petrinet!Transition 
+	to
+		s: statechart!OR (
+			
+		)
+		
+}
+
+
+--rule Pnet2Statechart {
+--	from
+--		pnet: petrinet!Net
+--	to
+--		schart: statechart!Statechart (
+--			topState <- t	
+--		),
+--		t: statechart!AND (
+--			name <- 'top',
+--			contains <- pnet.places -> collect(p | thisModule.Place2OR(p))
+--		),
+--		h: distinct statechart!HyperEdge foreach(transition in pnet.transitions) (
+--			name <- transition.name,
+--			rcontains <- thisModule.Place2And(transition.prep)
+--		)
+--}
 
 lazy rule Place2And {
 	from 
@@ -44,20 +77,55 @@ lazy rule Place2OR {
 		)
 }
 
-lazy rule Transition2HyperEdge {
+lazy rule Transition2HyperEdgeAnd {
 	from 
-		t: petrinet!Transition
+		t: petrinet!Transition (
+			t.prep.size() > 1 and t.isTheSame(t.prep, t.prep.first().name)
+		)
 	to
 		h: statechart!HyperEdge (
-			name <- t.name,
-			rcontains <- thisModule.Place2And(t.prep)
+			name <- 'and',
+			rcontains <- a
+--			next <- t.prep,
+--			rnext <- t.postp
+		),
+		b: statechart!Basic (
+--			name <- t.prep.first().name,
+--			rcontains <- a
+		),
+		rb: statechart!Basic (
+--			name <- t.postp.first().name,
+--			rcontains <- a
+		),
+		a: statechart!AND (
+			name <- '',
+			contains <- Set{h,b,rb}
+		)
+}
+
+lazy rule Transition2HyperEdgeOr {
+	from 
+		t: petrinet!Transition (
+			t.prep.size() > 1 and t.isTheSame(t.prep)
+		)
+	to
+		h: statechart!HyperEdge (
+			name <- 'and',
+			rcontains <- Set {}
 		)
 }
 
 
-helper context petrinet!Place def : isTheSame (t: petrinet!Transition) : Boolean =
-	self.prep.post = t
-;
+helper context petrinet!Transition def : isTheSame (tList: Sequence(petrinet!Place), firstName: String) : Boolean =
+	let ret: Boolean = true
+	in tList->asSequence()->iterate(t; f : petrinet!Place = tList.asSequence()->first() |
+		if t.name = firstName
+		then
+			true
+		else
+			false
+		endif
+	);
 
 --
 --helper context petrinet!Net def : getAllPlaces () : OrderedSet(petrinet!Place) =
