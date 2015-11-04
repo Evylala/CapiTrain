@@ -14,16 +14,7 @@ rule Pnet2Statechart {
 		),
 		t: statechart!AND (
 			name <- 'top',
-			contains <- pnet.transitions -> collect(s | pnet.transitions->asSequence()->iterate(t; 
-			f : petrinet!Transition = pnet.transitions.asSequence()->first() |
-					if t.prep.size() = 1
-						then
-							thisModule.Transition2State()
-						else
-							thisModule.Transition2State()
-					endif
-				)
-			)
+			contains <- pnet.transitions -> collect(t | thisModule.Transition2State(t))
 		)
 }
 
@@ -31,10 +22,18 @@ lazy rule Transition2State {
 	from
 		t:petrinet!Transition 
 	to
-		s: statechart!OR (
+		h: statechart!HyperEdge (
+			name <- t.name,
+			rcontains <- if t.prep = 1
+					then o
+					else a
+				endif
+		),
+		o: statechart!OR (
 			
+		),
+		a: statechart!AND (
 		)
-		
 }
 
 
