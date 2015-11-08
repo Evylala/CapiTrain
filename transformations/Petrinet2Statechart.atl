@@ -5,6 +5,7 @@ module Petrinet2Statechart;
 
 create OUT: statechart from input: petrinet;
 
+-- RULES
 rule Pnet2Statechart {
 	from
 		pnet: petrinet!Net
@@ -14,10 +15,114 @@ rule Pnet2Statechart {
 		),
 		t: statechart!AND (
 			name <- 'top',
-			contains <- pnet.transitions -> collect(t | thisModule.Transition2State(t))
+			contains <- pnet.places -> collect(p | thisModule.Place2OR(p))
 		)
 }
 
+-- LAZY RULES
+lazy rule Place2OR {
+	from
+		p: petrinet!Place
+	to
+		o: statechart!OR (
+			name <- '',
+			contains <- Set{b}
+		),
+		b: statechart!Basic (
+			name <- p.name,
+			rcontains <- o,
+			rnext <- if p.pret.size() < 1
+				then 
+					OclUndefined
+				else 
+					p.pret -> collect(h | thisModule.getNextHyperEdges(h, b))
+				endif,
+			next <- if p.pret.size() < 1
+				then 
+					OclUndefined
+				else 
+					p.postt -> collect(h | thisModule.getRNextHyperEdges(h, b))
+				endif
+		)
+}
+
+lazy rule Transition2NextHyperEdge {
+	from 
+		t: petrinet!Transition,
+		b: statechart!Basic
+	to
+		o: statechart!OR (
+			name <- '',
+			contains <- Set{h}
+		),
+		h: statechart!HyperEdge (
+			name <- t.name,
+			rcontains <- o,
+			next <- Set{b}
+		)
+}
+
+lazy rule Transition2RNextHyperEdge {
+	from 
+		t: petrinet!Transition,
+		b: statechart!Basic
+	to
+		o: statechart!OR (
+			name <- '',
+			contains <- Set{h}
+		),
+		h: statechart!HyperEdge (
+			name <- t.name,
+			rcontains <- o,
+			rnext <- Set{b}
+		)
+}
+
+-- HELPERS
+helper def: getNextHyperEdges(t: petrinet!Transition, b: statechart!Basic): Set(statechart!HyperEdge) =
+	let ret: statechart!HyperEdge = OclUndefined
+	in
+		if thisModule.getHyperEdge(t.name)
+		then 
+			thisModule.getHyperEdge(t.name).next.append(b)
+		else thisModule.Transition2NextHyperEdge(t, b)
+		endif
+	;
+helper def: getRNextHyperEdges(t: petrinet!Transition, b: statechart!Basic): Set(statechart!HyperEdge) =
+	let ret: statechart!HyperEdge = OclUndefined
+	in
+		if thisModule.getHyperEdge(t.name)
+		then 
+			thisModule.getHyperEdge(t.name).rnext.append(b)
+		else thisModule.Transition2RNextHyperEdge(t, b)
+		endif
+	;
+
+helper def: getBasic(n: String): statechart!Basic =
+	let allBasics: Sequence(statechart!Basic) =
+		statechart!Basic.allInstances()->asSequence() in
+	allBasics->iterate(b; f : statechart!Basic = allBasics->first() |
+		if b.name = n
+		then
+			b
+		else
+			OclUndefined
+		endif
+	);
+
+helper def: getHyperEdge(n: String): statechart!HyperEdge =
+	let allHyperEdges: Sequence(statechart!HyperEdge) =
+		statechart!HyperEdge.allInstances()->asSequence() in
+	allHyperEdges->iterate(h; f : statechart!HyperEdge = allHyperEdges->first() |
+		if h.name = n
+		then
+			h
+		else
+			OclUndefined
+		endif
+	);
+
+-- OLD
 lazy rule Transition2State {
 	from
 		t:petrinet!Transition 
@@ -63,18 +168,6 @@ lazy rule Place2And {
 		)
 }
 
-lazy rule Place2OR {
-	from
-		p: petrinet!Place
-	to
-		o: statechart!OR (
-			name <- '',
-			contains <- Set{b}
-		),
-		b: statechart!Basic (
-			name <- p.name
-		)
-}
 
 lazy rule Transition2HyperEdgeAnd {
 	from 
