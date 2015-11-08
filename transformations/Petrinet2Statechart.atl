@@ -18,7 +18,7 @@ rule Pnet2Statechart {
 			contains <- pnet.places -> collect(p | thisModule.Place2OR(p))
 		)
 	do {
-		thisModule.firstBasic.rework();
+		--thisModule.firstBasic.rework();
 	}
 }
 
@@ -38,13 +38,13 @@ lazy rule Place2OR {
 				then 
 					thisModule.firstBasic = b
 				else 
-					p.pret -> collect(h | thisModule.getNextHyperEdges(h, b))
+					p.pret -> collect(t | thisModule.getNextHyperEdges(t, b))
 				endif,
-			next <- if p.pret.size() < 1
+			next <- if p.postt.size() < 1
 				then 
 					OclUndefined
 				else 
-					p.postt -> collect(h | thisModule.getRNextHyperEdges(h, b))
+					p.postt -> collect(t | thisModule.getRNextHyperEdges(t, b))
 				endif
 		)
 }
@@ -116,26 +116,14 @@ helper def: getBasic(n: String): statechart!Basic =
 helper def: getHyperEdge(n: String): statechart!HyperEdge =
 	let allHyperEdges: Sequence(statechart!HyperEdge) =
 		statechart!HyperEdge.allInstances()->asSequence() in
-	allHyperEdges->iterate(h; name : String = n |
-		if h.name = name
-		then
-			h
-		else
-			OclUndefined
-		endif
-	);
-
+	allHyperEdges->select(h | h.name = n).first()
+	;
+		
 
 helper def: hyperEdgeExists(n: String): Boolean =
 	let allHyperEdges: Sequence(statechart!HyperEdge) =
 		statechart!HyperEdge.allInstances()->asSequence() in
-	allHyperEdges->iterate(h; name : String = n |
-		if h.name = name
-		then
-			true
-		else
-			false
-		endif
+	allHyperEdges->exists(h | h.name = n
 	);
 
 helper context statechart!Basic def: rework(): OclAny =
