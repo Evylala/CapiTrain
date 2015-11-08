@@ -18,7 +18,7 @@ rule Pnet2Statechart {
 			contains <- pnet.places -> collect(p | thisModule.Place2OR(p))
 		)
 	do {
---		thisModule.rework();
+		thisModule.firstBasic.rework();
 	}
 }
 
@@ -36,7 +36,7 @@ lazy rule Place2OR {
 			rcontains <- o,
 			rnext <- if p.pret.size() < 1
 				then 
-					OclUndefined
+					thisModule.firstBasic = b
 				else 
 					p.pret -> collect(h | thisModule.getNextHyperEdges(h, b))
 				endif,
@@ -138,14 +138,18 @@ helper def: hyperEdgeExists(n: String): Boolean =
 		endif
 	);
 
-helper def: rework(): OclAny =
-	let allHyperEdges: Sequence(statechart!HyperEdge) =
-		statechart!HyperEdge.allInstances()->asSequence()
-	in 
-		allHyperEdges->iterate(h; f : statechart!HyperEdge = allHyperEdges->first() |
-			OclUndefined
-		)
+helper context statechart!Basic def: rework(): OclAny =
+	OclUndefined
 	;
+
+helper context statechart!HyperEdge def: toOr(): OclAny =
+	OclUndefined
+	;
+
+helper context statechart!HyperEdge def: toAnd(): OclAny =
+	OclUndefined
+	;
+helper def: firstBasic: statechart!Basic = OclUndefined;
 
 -- OLD
 lazy rule Transition2State {

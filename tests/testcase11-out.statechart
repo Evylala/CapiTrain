@@ -3,27 +3,30 @@
   <schart:Statechart>
     <topState name="top">
       <contains xsi:type="schart:OR" name="">
-        <contains xsi:type="schart:Basic" name="p7" next="/0/@topState/@contains.0/@contains.0 /2/@contains.0 /3/@contains.0 /2 /3" rnext="/1/@contains.0 /1 /0/@topState/@contains.0/@contains.0"/>
+        <contains xsi:type="schart:Basic" name="p7" next="/3/@contains.0 /4/@contains.0 /3 /4" rnext="/1/@contains.0 /2/@contains.0 /1 /2"/>
       </contains>
       <contains xsi:type="schart:OR" name="">
-        <contains xsi:type="schart:Basic" name="p6" next="/7/@contains.0 /8/@contains.0 /9/@contains.0 /7 /8 /9" rnext="/4/@contains.0 /5/@contains.0 /6/@contains.0 /4 /5 /6"/>
+        <contains xsi:type="schart:Basic" name="p6" next="/8/@contains.0 /9/@contains.0 /10/@contains.0 /8 /9 /10" rnext="/5/@contains.0 /6/@contains.0 /7/@contains.0 /5 /6 /7"/>
       </contains>
       <contains xsi:type="schart:OR" name="">
-        <contains xsi:type="schart:Basic" name="p4" next="/12/@contains.0 /13/@contains.0 /12 /13" rnext="/10/@contains.0 /11/@contains.0 /10 /11"/>
+        <contains xsi:type="schart:Basic" name="p4" next="/13/@contains.0 /14/@contains.0 /13 /14" rnext="/11/@contains.0 /12/@contains.0 /11 /12"/>
       </contains>
       <contains xsi:type="schart:OR" name="">
-        <contains xsi:type="schart:Basic" name="p3" next="/17/@contains.0 /18/@contains.0 /19/@contains.0 /17 /18 /19" rnext="/14/@contains.0 /15/@contains.0 /16/@contains.0 /14 /15 /16"/>
+        <contains xsi:type="schart:Basic" name="p3" next="/18/@contains.0 /19/@contains.0 /20/@contains.0 /18 /19 /20" rnext="/15/@contains.0 /16/@contains.0 /17/@contains.0 /15 /16 /17"/>
       </contains>
       <contains xsi:type="schart:OR" name="">
-        <contains xsi:type="schart:Basic" name="p2" next="/22/@contains.0 /23/@contains.0 /22 /23" rnext="/20/@contains.0 /21/@contains.0 /20 /21"/>
+        <contains xsi:type="schart:Basic" name="p2" next="/23/@contains.0 /24/@contains.0 /23 /24" rnext="/21/@contains.0 /22/@contains.0 /21 /22"/>
       </contains>
       <contains xsi:type="schart:OR" name="">
-        <contains xsi:type="schart:Basic" name="p1" next="/25/@contains.0 /25" rnext="/24/@contains.0 /24"/>
+        <contains xsi:type="schart:Basic" name="p1" next="/26/@contains.0 /26" rnext="/25/@contains.0 /25"/>
       </contains>
     </topState>
   </schart:Statechart>
   <schart:OR name="" next="/0/@topState/@contains.0/@contains.0">
     <contains xsi:type="schart:HyperEdge" name="t5" next="/0/@topState/@contains.0/@contains.0"/>
+  </schart:OR>
+  <schart:OR name="" next="/0/@topState/@contains.0/@contains.0">
+    <contains xsi:type="schart:HyperEdge" name="t7" next="/0/@topState/@contains.0/@contains.0"/>
   </schart:OR>
   <schart:OR name="" rnext="/0/@topState/@contains.0/@contains.0">
     <contains xsi:type="schart:HyperEdge" name="t7" rnext="/0/@topState/@contains.0/@contains.0"/>
