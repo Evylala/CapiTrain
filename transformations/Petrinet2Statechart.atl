@@ -17,6 +17,9 @@ rule Pnet2Statechart {
 			name <- 'top',
 			contains <- pnet.places -> collect(p | thisModule.Place2OR(p))
 		)
+	do {
+--		thisModule.rework();
+	}
 }
 
 -- LAZY RULES
@@ -82,7 +85,7 @@ lazy rule Transition2RNextHyperEdge {
 helper def: getNextHyperEdges(t: petrinet!Transition, b: statechart!Basic): Set(statechart!HyperEdge) =
 	let ret: statechart!HyperEdge = OclUndefined
 	in
-		if thisModule.getHyperEdge(t.name)
+		if thisModule.hyperEdgeExists(t.name)
 		then 
 			thisModule.getHyperEdge(t.name).next.append(b)
 		else thisModule.Transition2NextHyperEdge(t, b)
@@ -91,7 +94,7 @@ helper def: getNextHyperEdges(t: petrinet!Transition, b: statechart!Basic): Set(
 helper def: getRNextHyperEdges(t: petrinet!Transition, b: statechart!Basic): Set(statechart!HyperEdge) =
 	let ret: statechart!HyperEdge = OclUndefined
 	in
-		if thisModule.getHyperEdge(t.name)
+		if thisModule.hyperEdgeExists(t.name)
 		then 
 			thisModule.getHyperEdge(t.name).rnext.append(b)
 		else thisModule.Transition2RNextHyperEdge(t, b)
@@ -101,8 +104,8 @@ helper def: getRNextHyperEdges(t: petrinet!Transition, b: statechart!Basic): Set
 helper def: getBasic(n: String): statechart!Basic =
 	let allBasics: Sequence(statechart!Basic) =
 		statechart!Basic.allInstances()->asSequence() in
-	allBasics->iterate(b; f : statechart!Basic = allBasics->first() |
-		if b.name = n
+	allBasics->iterate(b; name : String = n |
+		if b.name = name
 		then
 			b
 		else
@@ -113,14 +116,36 @@ helper def: getBasic(n: String): statechart!Basic =
 helper def: getHyperEdge(n: String): statechart!HyperEdge =
 	let allHyperEdges: Sequence(statechart!HyperEdge) =
 		statechart!HyperEdge.allInstances()->asSequence() in
-	allHyperEdges->iterate(h; f : statechart!HyperEdge = allHyperEdges->first() |
-		if h.name = n
+	allHyperEdges->iterate(h; name : String = n |
+		if h.name = name
 		then
 			h
 		else
 			OclUndefined
 		endif
 	);
+
+
+helper def: hyperEdgeExists(n: String): Boolean =
+	let allHyperEdges: Sequence(statechart!HyperEdge) =
+		statechart!HyperEdge.allInstances()->asSequence() in
+	allHyperEdges->iterate(h; name : String = n |
+		if h.name = name
+		then
+			true
+		else
+			false
+		endif
+	);
+
+helper def: rework(): OclAny =
+	let allHyperEdges: Sequence(statechart!HyperEdge) =
+		statechart!HyperEdge.allInstances()->asSequence()
+	in 
+		allHyperEdges->iterate(h; f : statechart!HyperEdge = allHyperEdges->first() |
+			OclUndefined
+		)
+	;
 
 -- OLD
 lazy rule Transition2State {
