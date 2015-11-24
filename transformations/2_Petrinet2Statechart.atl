@@ -1,0 +1,16 @@
+-- @path statechart=/CapiTrain/EMF/statechart.ecore
+-- @path petrinet=/CapiTrain/EMF/petrinet.ecore
+
+module Petrinet2Statechart;
+
+create OUT: statechart refining pnetIN: petrinet, schartIN : statechart;
+
+rule Petrinet2Statechart {
+	from 
+		p: petrinet!Place
+	to
+		b: statechart!Basic (
+			rnext <- p.pret, 
+			next <- p.postt
+		)
+}
