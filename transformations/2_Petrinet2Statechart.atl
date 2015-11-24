@@ -7,10 +7,29 @@ create OUT: statechart refining pnetIN: petrinet, schartIN : statechart;
 
 rule Petrinet2Statechart {
 	from 
-		p: petrinet!Place
+		s: statechart!Basic
+--		p: petrinet!Place
 	to
 		b: statechart!Basic (
-			rnext <- p.pret, 
-			next <- p.postt
+--			rnext <- if p.pret.isEmpty()
+--				then 
+--					OclUndefined
+--				else 
+--					p.pret -> collect(t | thisModule.getNext(t.name))
+--				endif,
+--			next <- if p.postt.isEmpty()
+--				then 
+--					OclUndefined
+--				else 
+--					p.postt -> collect(t | thisModule.getNext(t.name))
+--				endif
+			rnext <- Set{b},
+			next <- Set{b}
 		)
 }
+
+helper def: getNext(n: String): statechart!HyperEdge =
+	let allHyperEdges: Sequence(statechart!HyperEdge) =
+		statechart!HyperEdge.allInstances()->asSequence() in
+	allHyperEdges->select(h | h.name = n).first()
+;
