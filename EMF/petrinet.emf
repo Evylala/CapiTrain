@@ -1,26 +1,29 @@
-@namespace(
-	uri="http://a.b.c/x/y/Z",
-	prefix="pnet")
-	
+@namespace(uri="http://a.b.c/x/y/Z", prefix="pnet")
+@gmf(foo="bar")
 package petrinet;
 
-class NamedElement {
-	attr String name;
-}
-
-class Transition extends NamedElement {
-	ref Place[*]#pret prep; 
-	ref Place[*]#postt postp;
-	ref Net[1]#transitions net;
-}
-
-class Place extends NamedElement {
- 	ref Transition[*]#prep pret;
- 	ref Transition[*]#postp postt;
- 	ref Net[1]#places net;
-}
-
+@gmf.diagram(foo="bar")
 class Net {
-	val Place[*]#net places;
-	val Transition[*]#net transitions;
+  val Place[*]#cnet places;
+  val Transition[*]#cnet transitions;
+}
+
+abstract class NamedElement {
+  attr String name;
+}
+
+@gmf.node(label="name", figure="ellipse")
+class Place extends NamedElement {
+  @gmf.link(target.decoration="arrow")
+  ref Transition[*]#prep postt;
+  ref Transition[*]#postp pret;
+  ref Net[1]#places cnet;
+}
+
+@gmf.node(label="name", figure="rectangle", color="0,0,0", size="15,50", label.placement="external")
+class Transition extends NamedElement {
+  ref Place[*]#postt prep;
+  @gmf.link(target.decoration="arrow")
+  ref Place[*]#pret postp;
+  ref Net[1]#transitions cnet;
 }

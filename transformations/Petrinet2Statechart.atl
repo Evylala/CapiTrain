@@ -15,7 +15,7 @@ rule Pnet2Statechart {
 		),
 		t: statechart!AND (
 			name <- 'top',
-			contains <- pnet.places -> collect(p | thisModule.Place2OR(p))
+			contains <- pnet.places -> collect(p | thisModule.Place2OR(p)).union( )
 		)
 	do {
 		--thisModule.firstBasic.rework();
@@ -34,17 +34,17 @@ lazy rule Place2OR {
 		b: statechart!Basic (
 			name <- p.name,
 			rcontains <- o,
-			rnext <- if p.pret.size() < 1
+			rnext <- if p.pret.isEmpty()
 				then 
 					thisModule.firstBasic = b
 				else 
-					p.pret -> collect(t | thisModule.getNextHyperEdges(t, b))
+					p.pret -> collect(t | thisModule.getRNextHyperEdges(t, b))
 				endif,
-			next <- if p.postt.size() < 1
+			next <- if p.postt.isEmpty()
 				then 
 					OclUndefined
 				else 
-					p.postt -> collect(t | thisModule.getRNextHyperEdges(t, b))
+					p.postt -> collect(t | thisModule.getNextHyperEdges(t, b))
 				endif
 		)
 }
