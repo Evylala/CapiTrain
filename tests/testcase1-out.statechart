@@ -1,61 +1,59 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:schart="http://a.b.c/x/y/Z">
-  <schart:Statechart>
-    <topState name="top">
-      <contains xsi:type="schart:OR" name="">
-        <contains xsi:type="schart:Basic" name="E10" next="/1/@contains.0 /0/@topState/@contains.0/@contains.0 /0/@topState/@contains.5/@contains.0 /0/@topState/@contains.6/@contains.0 /0/@topState/@contains.9/@contains.0 /0/@topState/@contains.10/@contains.0" rnext="/1 /0/@topState/@contains.0/@contains.0"/>
-      </contains>
-      <contains xsi:type="schart:OR" name="">
-        <contains xsi:type="schart:Basic" name="E0" next="/2/@contains.0 /0/@topState/@contains.1/@contains.0 /0/@topState/@contains.2/@contains.0" rnext="/2 /0/@topState/@contains.1/@contains.0"/>
-      </contains>
-      <contains xsi:type="schart:OR" name="">
-        <contains xsi:type="schart:Basic" name="E1" next="/3/@contains.0 /0/@topState/@contains.2/@contains.0 /0/@topState/@contains.3/@contains.0 /0/@topState/@contains.7/@contains.0" rnext="/3 /0/@topState/@contains.1/@contains.0 /0/@topState/@contains.2/@contains.0"/>
-      </contains>
-      <contains xsi:type="schart:OR" name="">
-        <contains xsi:type="schart:Basic" name="E2" next="/4/@contains.0 /0/@topState/@contains.3/@contains.0 /0/@topState/@contains.4/@contains.0" rnext="/4 /0/@topState/@contains.2/@contains.0 /0/@topState/@contains.3/@contains.0"/>
-      </contains>
-      <contains xsi:type="schart:OR" name="">
-        <contains xsi:type="schart:Basic" name="E3" next="/5/@contains.0 /0/@topState/@contains.4/@contains.0 /0/@topState/@contains.5/@contains.0" rnext="/5 /0/@topState/@contains.3/@contains.0 /0/@topState/@contains.4/@contains.0"/>
-      </contains>
-      <contains xsi:type="schart:OR" name="">
-        <contains xsi:type="schart:Basic" name="E4" next="/0/@topState/@contains.5/@contains.0" rnext="/0/@topState/@contains.0/@contains.0 /0/@topState/@contains.5/@contains.0 /0/@topState/@contains.4/@contains.0"/>
-      </contains>
-      <contains xsi:type="schart:OR" name="">
-        <contains xsi:type="schart:Basic" name="E5" next="/6/@contains.0 /0/@topState/@contains.6/@contains.0 /0/@topState/@contains.7/@contains.0 /0/@topState/@contains.8/@contains.0" rnext="/0/@topState/@contains.0/@contains.0 /0/@topState/@contains.6/@contains.0 /6"/>
-      </contains>
-      <contains xsi:type="schart:OR" name="">
-        <contains xsi:type="schart:Basic" name="E6" next="/0/@topState/@contains.7/@contains.0" rnext="/0/@topState/@contains.6/@contains.0 /0/@topState/@contains.7/@contains.0 /0/@topState/@contains.2/@contains.0"/>
-      </contains>
-      <contains xsi:type="schart:OR" name="">
-        <contains xsi:type="schart:Basic" name="E7" next="/7/@contains.0 /0/@topState/@contains.8/@contains.0 /0/@topState/@contains.9/@contains.0" rnext="/7 /0/@topState/@contains.6/@contains.0 /0/@topState/@contains.8/@contains.0"/>
-      </contains>
-      <contains xsi:type="schart:OR" name="">
-        <contains xsi:type="schart:Basic" name="E8" next="/0/@topState/@contains.9/@contains.0" rnext="/0/@topState/@contains.0/@contains.0 /0/@topState/@contains.9/@contains.0 /0/@topState/@contains.8/@contains.0"/>
-      </contains>
-      <contains xsi:type="schart:OR" name="">
-        <contains xsi:type="schart:Basic" name="E9" next="/0/@topState/@contains.10/@contains.0" rnext="/0/@topState/@contains.0/@contains.0 /0/@topState/@contains.10/@contains.0"/>
-      </contains>
-    </topState>
-  </schart:Statechart>
-  <schart:OR name="" next="/0/@topState/@contains.0/@contains.0">
-    <contains xsi:type="schart:HyperEdge" name="E17" rnext="/0/@topState/@contains.0/@contains.0"/>
-  </schart:OR>
-  <schart:OR name="" next="/0/@topState/@contains.1/@contains.0">
-    <contains xsi:type="schart:HyperEdge" name="E11" rnext="/0/@topState/@contains.1/@contains.0"/>
-  </schart:OR>
-  <schart:OR name="" next="/0/@topState/@contains.2/@contains.0">
-    <contains xsi:type="schart:HyperEdge" name="E12" rnext="/0/@topState/@contains.2/@contains.0"/>
-  </schart:OR>
-  <schart:OR name="" next="/0/@topState/@contains.3/@contains.0">
-    <contains xsi:type="schart:HyperEdge" name="E13" rnext="/0/@topState/@contains.3/@contains.0"/>
-  </schart:OR>
-  <schart:OR name="" next="/0/@topState/@contains.4/@contains.0">
-    <contains xsi:type="schart:HyperEdge" name="E14" rnext="/0/@topState/@contains.4/@contains.0"/>
-  </schart:OR>
-  <schart:OR name="" next="/0/@topState/@contains.6/@contains.0">
-    <contains xsi:type="schart:HyperEdge" name="E15" rnext="/0/@topState/@contains.6/@contains.0"/>
-  </schart:OR>
-  <schart:OR name="" next="/0/@topState/@contains.8/@contains.0">
-    <contains xsi:type="schart:HyperEdge" name="E16" rnext="/0/@topState/@contains.8/@contains.0"/>
-  </schart:OR>
-</xmi:XMI>
+<schart:Statechart xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:schart="http://a.b.c/x/y/Z">
+  <topState name="top">
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="E10"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="E0"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="E1"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="E2"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="E3"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="E4"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="E5"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="E6"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="E7"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="E8"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="E9"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:HyperEdge" name="E11"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:HyperEdge" name="E12"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:HyperEdge" name="E13"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:HyperEdge" name="E14"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:HyperEdge" name="E15"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:HyperEdge" name="E16"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:HyperEdge" name="E17"/>
+    </contains>
+  </topState>
+</schart:Statechart>

@@ -1,0 +1,49 @@
+-- @path statechart=/CapiTrain/EMF/statechart.ecore
+-- @path petrinet=/CapiTrain/EMF/petrinet.ecore
+
+module Petrinet2Statechart;
+
+create OUT: statechart from input: petrinet;
+
+-- RULES
+rule Pnet2Statechart {
+	from
+		pnet: petrinet!Net
+	to
+		schart: statechart!Statechart (
+			topState <- t	
+		),
+		t: statechart!AND (
+			name <- 'top',
+			contains <- pnet.places -> collect(p | thisModule.Place2OR(p))
+				-> union( pnet.transitions -> collect(t | thisModule.Transition2HyperEdge(t)) )
+		)
+}
+
+-- LAZY RULES
+lazy rule Place2OR {
+	from
+		p: petrinet!Place
+	to
+		o: statechart!OR (
+			name <- '',
+			contains <- Set{b}
+		),
+		b: statechart!Basic (
+			name <- p.name,
+			rcontains <- o
+		)
+}
+
+lazy rule Transition2HyperEdge {
+	from
+		t: petrinet!Transaction
+	to
+		o: statechart!OR (
+			name <- '',
+			contains <- Set{h}
+		),
+		h: statechart!HyperEdge (
+			name <- t.name,
+			rcontains <- o)
+}

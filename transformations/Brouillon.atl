@@ -1,26 +1,6 @@
--- @path statechart=/CapiTrain/EMF/statechart.ecore
--- @path petrinet=/CapiTrain/EMF/petrinet.ecore
-
-module Petrinet2Statechart;
+module Brouillon;
 
 create OUT: statechart from input: petrinet;
-
--- RULES
-rule Pnet2Statechart {
-	from
-		pnet: petrinet!Net
-	to
-		schart: statechart!Statechart (
-			topState <- t	
-		),
-		t: statechart!AND (
-			name <- 'top',
-			contains <- pnet.places -> collect(p | thisModule.Place2OR(p)).union( )
-		)
-	do {
-		--thisModule.firstBasic.rework();
-	}
-}
 
 -- LAZY RULES
 lazy rule Place2OR {
@@ -33,19 +13,19 @@ lazy rule Place2OR {
 		),
 		b: statechart!Basic (
 			name <- p.name,
-			rcontains <- o,
-			rnext <- if p.pret.isEmpty()
-				then 
-					thisModule.firstBasic = b
-				else 
-					p.pret -> collect(t | thisModule.getRNextHyperEdges(t, b))
-				endif,
-			next <- if p.postt.isEmpty()
-				then 
-					OclUndefined
-				else 
-					p.postt -> collect(t | thisModule.getNextHyperEdges(t, b))
-				endif
+			rcontains <- o
+--			rnext <- if p.pret.isEmpty()
+--				then 
+--					thisModule.firstBasic = b
+--				else 
+--					p.pret -> collect(t | thisModule.getRNextHyperEdges(t, b))
+--				endif,
+--			next <- if p.postt.isEmpty()
+--				then 
+--					OclUndefined
+--				else 
+--					p.postt -> collect(t | thisModule.getNextHyperEdges(t, b))
+--				endif
 		)
 }
 
