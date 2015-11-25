@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<schart:Statechart xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:schart="http://a.b.c/x/y/Z">
+  <topState name="top">
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="E10"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="E0"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="E1"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="E2"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="E3"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="E4"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="E5"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="E6"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="E7"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="E8"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="E9"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:HyperEdge" name="E11"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:HyperEdge" name="E12"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:HyperEdge" name="E13"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:HyperEdge" name="E14"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:HyperEdge" name="E15"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:HyperEdge" name="E16"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:HyperEdge" name="E17"/>
+    </contains>
+  </topState>
+</schart:Statechart>
