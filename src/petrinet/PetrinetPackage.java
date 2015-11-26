@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-user-doc -->
  * @see petrinet.PetrinetFactory
  * @model kind="package"
+ *        annotation="gmf foo='bar'"
  * @generated
  */
 public interface PetrinetPackage extends EPackage {
@@ -46,7 +47,7 @@ public interface PetrinetPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_PREFIX = "p";
+	String eNS_PREFIX = "pnet";
 
 	/**
 	 * The singleton instance of the package.
@@ -57,171 +58,6 @@ public interface PetrinetPackage extends EPackage {
 	PetrinetPackage eINSTANCE = petrinet.impl.PetrinetPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link petrinet.impl.NamedElementImpl <em>Named Element</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see petrinet.impl.NamedElementImpl
-	 * @see petrinet.impl.PetrinetPackageImpl#getNamedElement()
-	 * @generated
-	 */
-	int NAMED_ELEMENT = 0;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NAMED_ELEMENT__NAME = 0;
-
-	/**
-	 * The number of structural features of the '<em>Named Element</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NAMED_ELEMENT_FEATURE_COUNT = 1;
-
-	/**
-	 * The number of operations of the '<em>Named Element</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NAMED_ELEMENT_OPERATION_COUNT = 0;
-
-	/**
-	 * The meta object id for the '{@link petrinet.impl.TransitionImpl <em>Transition</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see petrinet.impl.TransitionImpl
-	 * @see petrinet.impl.PetrinetPackageImpl#getTransition()
-	 * @generated
-	 */
-	int TRANSITION = 1;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANSITION__NAME = NAMED_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Prep</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANSITION__PREP = NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Postp</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANSITION__POSTP = NAMED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Net</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANSITION__NET = NAMED_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of structural features of the '<em>Transition</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANSITION_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The number of operations of the '<em>Transition</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRANSITION_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link petrinet.impl.PlaceImpl <em>Place</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see petrinet.impl.PlaceImpl
-	 * @see petrinet.impl.PetrinetPackageImpl#getPlace()
-	 * @generated
-	 */
-	int PLACE = 2;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PLACE__NAME = NAMED_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Pret</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PLACE__PRET = NAMED_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Postt</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PLACE__POSTT = NAMED_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Net</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PLACE__NET = NAMED_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of structural features of the '<em>Place</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PLACE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The number of operations of the '<em>Place</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PLACE_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link petrinet.impl.NetImpl <em>Net</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -229,7 +65,7 @@ public interface PetrinetPackage extends EPackage {
 	 * @see petrinet.impl.PetrinetPackageImpl#getNet()
 	 * @generated
 	 */
-	int NET = 3;
+	int NET = 0;
 
 	/**
 	 * The feature id for the '<em><b>Places</b></em>' containment reference list.
@@ -267,113 +103,171 @@ public interface PetrinetPackage extends EPackage {
 	 */
 	int NET_OPERATION_COUNT = 0;
 
-
 	/**
-	 * Returns the meta object for class '{@link petrinet.NamedElement <em>Named Element</em>}'.
+	 * The meta object id for the '{@link petrinet.impl.NamedElementImpl <em>Named Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Named Element</em>'.
-	 * @see petrinet.NamedElement
+	 * @see petrinet.impl.NamedElementImpl
+	 * @see petrinet.impl.PetrinetPackageImpl#getNamedElement()
 	 * @generated
 	 */
-	EClass getNamedElement();
+	int NAMED_ELEMENT = 1;
 
 	/**
-	 * Returns the meta object for the attribute '{@link petrinet.NamedElement#getName <em>Name</em>}'.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see petrinet.NamedElement#getName()
-	 * @see #getNamedElement()
 	 * @generated
+	 * @ordered
 	 */
-	EAttribute getNamedElement_Name();
+	int NAMED_ELEMENT__NAME = 0;
 
 	/**
-	 * Returns the meta object for class '{@link petrinet.Transition <em>Transition</em>}'.
+	 * The number of structural features of the '<em>Named Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Transition</em>'.
-	 * @see petrinet.Transition
 	 * @generated
+	 * @ordered
 	 */
-	EClass getTransition();
+	int NAMED_ELEMENT_FEATURE_COUNT = 1;
 
 	/**
-	 * Returns the meta object for the reference list '{@link petrinet.Transition#getPrep <em>Prep</em>}'.
+	 * The number of operations of the '<em>Named Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Prep</em>'.
-	 * @see petrinet.Transition#getPrep()
-	 * @see #getTransition()
 	 * @generated
+	 * @ordered
 	 */
-	EReference getTransition_Prep();
+	int NAMED_ELEMENT_OPERATION_COUNT = 0;
 
 	/**
-	 * Returns the meta object for the reference list '{@link petrinet.Transition#getPostp <em>Postp</em>}'.
+	 * The meta object id for the '{@link petrinet.impl.PlaceImpl <em>Place</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Postp</em>'.
-	 * @see petrinet.Transition#getPostp()
-	 * @see #getTransition()
+	 * @see petrinet.impl.PlaceImpl
+	 * @see petrinet.impl.PetrinetPackageImpl#getPlace()
 	 * @generated
 	 */
-	EReference getTransition_Postp();
+	int PLACE = 2;
 
 	/**
-	 * Returns the meta object for the container reference '{@link petrinet.Transition#getNet <em>Net</em>}'.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Net</em>'.
-	 * @see petrinet.Transition#getNet()
-	 * @see #getTransition()
 	 * @generated
+	 * @ordered
 	 */
-	EReference getTransition_Net();
+	int PLACE__NAME = NAMED_ELEMENT__NAME;
 
 	/**
-	 * Returns the meta object for class '{@link petrinet.Place <em>Place</em>}'.
+	 * The feature id for the '<em><b>Postt</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Place</em>'.
-	 * @see petrinet.Place
 	 * @generated
+	 * @ordered
 	 */
-	EClass getPlace();
+	int PLACE__POSTT = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * Returns the meta object for the reference list '{@link petrinet.Place#getPret <em>Pret</em>}'.
+	 * The feature id for the '<em><b>Pret</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Pret</em>'.
-	 * @see petrinet.Place#getPret()
-	 * @see #getPlace()
 	 * @generated
+	 * @ordered
 	 */
-	EReference getPlace_Pret();
+	int PLACE__PRET = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * Returns the meta object for the reference list '{@link petrinet.Place#getPostt <em>Postt</em>}'.
+	 * The feature id for the '<em><b>Cnet</b></em>' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Postt</em>'.
-	 * @see petrinet.Place#getPostt()
-	 * @see #getPlace()
 	 * @generated
+	 * @ordered
 	 */
-	EReference getPlace_Postt();
+	int PLACE__CNET = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * Returns the meta object for the container reference '{@link petrinet.Place#getNet <em>Net</em>}'.
+	 * The number of structural features of the '<em>Place</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Net</em>'.
-	 * @see petrinet.Place#getNet()
-	 * @see #getPlace()
+	 * @generated
+	 * @ordered
+	 */
+	int PLACE_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Place</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PLACE_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link petrinet.impl.TransitionImpl <em>Transition</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see petrinet.impl.TransitionImpl
+	 * @see petrinet.impl.PetrinetPackageImpl#getTransition()
 	 * @generated
 	 */
-	EReference getPlace_Net();
+	int TRANSITION = 3;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Prep</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__PREP = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Postp</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__POSTP = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Cnet</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION__CNET = NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Transition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Transition</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TRANSITION_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
 
 	/**
 	 * Returns the meta object for class '{@link petrinet.Net <em>Net</em>}'.
@@ -408,6 +302,113 @@ public interface PetrinetPackage extends EPackage {
 	EReference getNet_Transitions();
 
 	/**
+	 * Returns the meta object for class '{@link petrinet.NamedElement <em>Named Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Named Element</em>'.
+	 * @see petrinet.NamedElement
+	 * @generated
+	 */
+	EClass getNamedElement();
+
+	/**
+	 * Returns the meta object for the attribute '{@link petrinet.NamedElement#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see petrinet.NamedElement#getName()
+	 * @see #getNamedElement()
+	 * @generated
+	 */
+	EAttribute getNamedElement_Name();
+
+	/**
+	 * Returns the meta object for class '{@link petrinet.Place <em>Place</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Place</em>'.
+	 * @see petrinet.Place
+	 * @generated
+	 */
+	EClass getPlace();
+
+	/**
+	 * Returns the meta object for the reference list '{@link petrinet.Place#getPostt <em>Postt</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Postt</em>'.
+	 * @see petrinet.Place#getPostt()
+	 * @see #getPlace()
+	 * @generated
+	 */
+	EReference getPlace_Postt();
+
+	/**
+	 * Returns the meta object for the reference list '{@link petrinet.Place#getPret <em>Pret</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Pret</em>'.
+	 * @see petrinet.Place#getPret()
+	 * @see #getPlace()
+	 * @generated
+	 */
+	EReference getPlace_Pret();
+
+	/**
+	 * Returns the meta object for the container reference '{@link petrinet.Place#getCnet <em>Cnet</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Cnet</em>'.
+	 * @see petrinet.Place#getCnet()
+	 * @see #getPlace()
+	 * @generated
+	 */
+	EReference getPlace_Cnet();
+
+	/**
+	 * Returns the meta object for class '{@link petrinet.Transition <em>Transition</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Transition</em>'.
+	 * @see petrinet.Transition
+	 * @generated
+	 */
+	EClass getTransition();
+
+	/**
+	 * Returns the meta object for the reference list '{@link petrinet.Transition#getPrep <em>Prep</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Prep</em>'.
+	 * @see petrinet.Transition#getPrep()
+	 * @see #getTransition()
+	 * @generated
+	 */
+	EReference getTransition_Prep();
+
+	/**
+	 * Returns the meta object for the reference list '{@link petrinet.Transition#getPostp <em>Postp</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Postp</em>'.
+	 * @see petrinet.Transition#getPostp()
+	 * @see #getTransition()
+	 * @generated
+	 */
+	EReference getTransition_Postp();
+
+	/**
+	 * Returns the meta object for the container reference '{@link petrinet.Transition#getCnet <em>Cnet</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Cnet</em>'.
+	 * @see petrinet.Transition#getCnet()
+	 * @see #getTransition()
+	 * @generated
+	 */
+	EReference getTransition_Cnet();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -431,6 +432,32 @@ public interface PetrinetPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
+		 * The meta object literal for the '{@link petrinet.impl.NetImpl <em>Net</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see petrinet.impl.NetImpl
+		 * @see petrinet.impl.PetrinetPackageImpl#getNet()
+		 * @generated
+		 */
+		EClass NET = eINSTANCE.getNet();
+
+		/**
+		 * The meta object literal for the '<em><b>Places</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NET__PLACES = eINSTANCE.getNet_Places();
+
+		/**
+		 * The meta object literal for the '<em><b>Transitions</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NET__TRANSITIONS = eINSTANCE.getNet_Transitions();
+
+		/**
 		 * The meta object literal for the '{@link petrinet.impl.NamedElementImpl <em>Named Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -447,6 +474,40 @@ public interface PetrinetPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute NAMED_ELEMENT__NAME = eINSTANCE.getNamedElement_Name();
+
+		/**
+		 * The meta object literal for the '{@link petrinet.impl.PlaceImpl <em>Place</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see petrinet.impl.PlaceImpl
+		 * @see petrinet.impl.PetrinetPackageImpl#getPlace()
+		 * @generated
+		 */
+		EClass PLACE = eINSTANCE.getPlace();
+
+		/**
+		 * The meta object literal for the '<em><b>Postt</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PLACE__POSTT = eINSTANCE.getPlace_Postt();
+
+		/**
+		 * The meta object literal for the '<em><b>Pret</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PLACE__PRET = eINSTANCE.getPlace_Pret();
+
+		/**
+		 * The meta object literal for the '<em><b>Cnet</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PLACE__CNET = eINSTANCE.getPlace_Cnet();
 
 		/**
 		 * The meta object literal for the '{@link petrinet.impl.TransitionImpl <em>Transition</em>}' class.
@@ -475,72 +536,12 @@ public interface PetrinetPackage extends EPackage {
 		EReference TRANSITION__POSTP = eINSTANCE.getTransition_Postp();
 
 		/**
-		 * The meta object literal for the '<em><b>Net</b></em>' container reference feature.
+		 * The meta object literal for the '<em><b>Cnet</b></em>' container reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference TRANSITION__NET = eINSTANCE.getTransition_Net();
-
-		/**
-		 * The meta object literal for the '{@link petrinet.impl.PlaceImpl <em>Place</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see petrinet.impl.PlaceImpl
-		 * @see petrinet.impl.PetrinetPackageImpl#getPlace()
-		 * @generated
-		 */
-		EClass PLACE = eINSTANCE.getPlace();
-
-		/**
-		 * The meta object literal for the '<em><b>Pret</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PLACE__PRET = eINSTANCE.getPlace_Pret();
-
-		/**
-		 * The meta object literal for the '<em><b>Postt</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PLACE__POSTT = eINSTANCE.getPlace_Postt();
-
-		/**
-		 * The meta object literal for the '<em><b>Net</b></em>' container reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PLACE__NET = eINSTANCE.getPlace_Net();
-
-		/**
-		 * The meta object literal for the '{@link petrinet.impl.NetImpl <em>Net</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see petrinet.impl.NetImpl
-		 * @see petrinet.impl.PetrinetPackageImpl#getNet()
-		 * @generated
-		 */
-		EClass NET = eINSTANCE.getNet();
-
-		/**
-		 * The meta object literal for the '<em><b>Places</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference NET__PLACES = eINSTANCE.getNet_Places();
-
-		/**
-		 * The meta object literal for the '<em><b>Transitions</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference NET__TRANSITIONS = eINSTANCE.getNet_Transitions();
+		EReference TRANSITION__CNET = eINSTANCE.getTransition_Cnet();
 
 	}
 

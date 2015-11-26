@@ -20,14 +20,14 @@ import org.eclipse.emf.ecore.EObject;
  * </ul>
  *
  * @see petrinet.PetrinetPackage#getNet()
- * @model
+ * @model annotation="gmf.diagram foo='bar'"
  * @generated
  */
 public interface Net extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Places</b></em>' containment reference list.
 	 * The list contents are of type {@link petrinet.Place}.
-	 * It is bidirectional and its opposite is '{@link petrinet.Place#getNet <em>Net</em>}'.
+	 * It is bidirectional and its opposite is '{@link petrinet.Place#getCnet <em>Cnet</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Places</em>' containment reference list isn't clear,
@@ -36,8 +36,8 @@ public interface Net extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Places</em>' containment reference list.
 	 * @see petrinet.PetrinetPackage#getNet_Places()
-	 * @see petrinet.Place#getNet
-	 * @model opposite="net" containment="true"
+	 * @see petrinet.Place#getCnet
+	 * @model opposite="cnet" containment="true"
 	 * @generated
 	 */
 	EList<Place> getPlaces();
@@ -45,7 +45,7 @@ public interface Net extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Transitions</b></em>' containment reference list.
 	 * The list contents are of type {@link petrinet.Transition}.
-	 * It is bidirectional and its opposite is '{@link petrinet.Transition#getNet <em>Net</em>}'.
+	 * It is bidirectional and its opposite is '{@link petrinet.Transition#getCnet <em>Cnet</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Transitions</em>' containment reference list isn't clear,
@@ -54,8 +54,8 @@ public interface Net extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Transitions</em>' containment reference list.
 	 * @see petrinet.PetrinetPackage#getNet_Transitions()
-	 * @see petrinet.Transition#getNet
-	 * @model opposite="net" containment="true"
+	 * @see petrinet.Transition#getCnet
+	 * @model opposite="cnet" containment="true"
 	 * @generated
 	 */
 	EList<Transition> getTransitions();

@@ -8,7 +8,7 @@ create schartOut: statechart refining schartInput : statechart, pnetInput: petri
 rule Petrinet2StatechartAndRuleNext {
 	from 
 		h1: statechart!HyperEdge (
-			thisModule.getNextAndNames().includes(h1.name)
+			thisModule.getNextAndNames().first() = h1.name
 		)
 	to
 		h2: statechart!HyperEdge (
@@ -41,21 +41,24 @@ helper def: getNextAndNames(): Sequence(String) =
 	-> collect(t | t.name);
 
 helper context petrinet!Transition def: isPostpAndTransition(): Boolean = 
-	if self.postp.size() = 2 
-	then if thisModule.posttEquivalents(self.postp.at(1), self.postp.at(2))
-		then true
-		else false
-		endif
+	if self.postp.size() > 1
+	then thisModule.posttEquivalents(self.name, self.postp) and thisModule.posttEquivalents(self.name, self.postp)
 	else false
 	endif
 ;
 	
-helper def: posttEquivalents(p1: petrinet!Place, p2: petrinet!Place): Boolean = 
-	if p1.postt.size() = 1 and p2.postt.size() = 1
-	then if p1.postt.first().name = p2.postt.first().name
-		then true
+helper def: posttEquivalents(name: String, postp: Sequence(petrinet!Place)): Boolean = 
+	postp -> iterate(p; ret: Boolean = false |
+		if (postp.first().postt.size() = 1 and p.postt.size() = 1)
+		then (postp.first().postt.first().name = p.postt.first().name)
 		else false
-		endif
-	else false
-	endif
-	;
+		endif	
+	);
+	
+helper def: pretEquivalents(name: String, postp: Sequence(petrinet!Place)): Boolean = 
+	postp -> iterate(p; ret: Boolean = false |
+		if (postp.first().pret.size() = 1 and p.pret.size() = 1)
+		then (postp.first().pret.first().name = p.pret.first().name)
+		else false
+		endif	
+	);

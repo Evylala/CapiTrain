@@ -66,16 +66,15 @@ public class PetrinetSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case PetrinetPackage.NAMED_ELEMENT: {
-				NamedElement namedElement = (NamedElement)theEObject;
-				T result = caseNamedElement(namedElement);
+			case PetrinetPackage.NET: {
+				Net net = (Net)theEObject;
+				T result = caseNet(net);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case PetrinetPackage.TRANSITION: {
-				Transition transition = (Transition)theEObject;
-				T result = caseTransition(transition);
-				if (result == null) result = caseNamedElement(transition);
+			case PetrinetPackage.NAMED_ELEMENT: {
+				NamedElement namedElement = (NamedElement)theEObject;
+				T result = caseNamedElement(namedElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -86,14 +85,30 @@ public class PetrinetSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case PetrinetPackage.NET: {
-				Net net = (Net)theEObject;
-				T result = caseNet(net);
+			case PetrinetPackage.TRANSITION: {
+				Transition transition = (Transition)theEObject;
+				T result = caseTransition(transition);
+				if (result == null) result = caseNamedElement(transition);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			default: return defaultCase(theEObject);
 		}
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Net</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Net</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNet(Net object) {
+		return null;
 	}
 
 	/**
@@ -108,21 +123,6 @@ public class PetrinetSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseNamedElement(NamedElement object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Transition</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Transition</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseTransition(Transition object) {
 		return null;
 	}
 
@@ -142,17 +142,17 @@ public class PetrinetSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Net</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Transition</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Net</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Transition</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseNet(Net object) {
+	public T caseTransition(Transition object) {
 		return null;
 	}
 

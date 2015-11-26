@@ -22,22 +22,13 @@ public interface PetrinetFactory extends EFactory {
 	PetrinetFactory eINSTANCE = petrinet.impl.PetrinetFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Named Element</em>'.
+	 * Returns a new object of class '<em>Net</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Named Element</em>'.
+	 * @return a new object of class '<em>Net</em>'.
 	 * @generated
 	 */
-	NamedElement createNamedElement();
-
-	/**
-	 * Returns a new object of class '<em>Transition</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Transition</em>'.
-	 * @generated
-	 */
-	Transition createTransition();
+	Net createNet();
 
 	/**
 	 * Returns a new object of class '<em>Place</em>'.
@@ -49,13 +40,13 @@ public interface PetrinetFactory extends EFactory {
 	Place createPlace();
 
 	/**
-	 * Returns a new object of class '<em>Net</em>'.
+	 * Returns a new object of class '<em>Transition</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Net</em>'.
+	 * @return a new object of class '<em>Transition</em>'.
 	 * @generated
 	 */
-	Net createNet();
+	Transition createTransition();
 
 	/**
 	 * Returns the package supported by this factory.

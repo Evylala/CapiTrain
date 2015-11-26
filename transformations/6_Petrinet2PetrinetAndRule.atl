@@ -1,3 +1,4 @@
+-- @atlcompiler atl2010
 -- @path statechart=/CapiTrain/EMF/statechart.ecore
 -- @path petrinet=/CapiTrain/EMF/petrinet.ecore
 
@@ -5,9 +6,41 @@ module Petrinet2Statechart;
 
 create pnetOut: petrinet refining pnetInput: petrinet;
 
+-- drop the places
 rule Petrinet2PetrinetAndRuleNext {
 	from
-		t: petrinet!Transition 
+		p: petrinet!Place  (
+			thisModule.getPlaceNamesToDrop().includes(p.name)
+		)
 	to
-		t2: petrinet!Transition ()
-}
+		drop
+} 
+
+helper def: getPlaceNamesToDrop(): Sequence(String) =
+	petrinet!Place -> allInstances() 
+		-> select(p | p.pret.size() = 1)
+		-> select(p | p.pret.first().name = thisModule.getNextAndNames().first() 
+			and not (p.name = petrinet!Transition -> allInstances() -> select(t | 
+				t.name = thisModule.getNextAndNames().first()).first().postp.first().name))
+		-> collect(p | p.name)
+	;
+
+helper def: getNextAndNames(): Sequence(String) =
+	petrinet!Transition -> allInstances() -> select(t | t.isPostpAndTransition()) 
+	-> collect(t | t.name);
+
+
+helper context petrinet!Transition def: isPostpAndTransition(): Boolean = 
+	if self.postp.size() = 2 
+	then thisModule.posttEquivalents(self.postp.at(1), self.postp.at(2))
+	else false
+	endif
+;
+
+	
+helper def: posttEquivalents(p1: petrinet!Place, p2: petrinet!Place): Boolean = 
+	if p1.postt.size() = 1 and p2.postt.size() = 1
+	then p1.postt.first().name = p2.postt.first().name
+	else false
+	endif
+	;

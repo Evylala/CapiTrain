@@ -33,7 +33,7 @@ import petrinet.Transition;
  * <ul>
  *   <li>{@link petrinet.impl.TransitionImpl#getPrep <em>Prep</em>}</li>
  *   <li>{@link petrinet.impl.TransitionImpl#getPostp <em>Postp</em>}</li>
- *   <li>{@link petrinet.impl.TransitionImpl#getNet <em>Net</em>}</li>
+ *   <li>{@link petrinet.impl.TransitionImpl#getCnet <em>Cnet</em>}</li>
  * </ul>
  *
  * @generated
@@ -85,7 +85,7 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	 */
 	public EList<Place> getPrep() {
 		if (prep == null) {
-			prep = new EObjectWithInverseResolvingEList.ManyInverse<Place>(Place.class, this, PetrinetPackage.TRANSITION__PREP, PetrinetPackage.PLACE__PRET);
+			prep = new EObjectWithInverseResolvingEList.ManyInverse<Place>(Place.class, this, PetrinetPackage.TRANSITION__PREP, PetrinetPackage.PLACE__POSTT);
 		}
 		return prep;
 	}
@@ -97,7 +97,7 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	 */
 	public EList<Place> getPostp() {
 		if (postp == null) {
-			postp = new EObjectWithInverseResolvingEList.ManyInverse<Place>(Place.class, this, PetrinetPackage.TRANSITION__POSTP, PetrinetPackage.PLACE__POSTT);
+			postp = new EObjectWithInverseResolvingEList.ManyInverse<Place>(Place.class, this, PetrinetPackage.TRANSITION__POSTP, PetrinetPackage.PLACE__PRET);
 		}
 		return postp;
 	}
@@ -107,8 +107,8 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Net getNet() {
-		if (eContainerFeatureID() != PetrinetPackage.TRANSITION__NET) return null;
+	public Net getCnet() {
+		if (eContainerFeatureID() != PetrinetPackage.TRANSITION__CNET) return null;
 		return (Net)eInternalContainer();
 	}
 
@@ -117,8 +117,8 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetNet(Net newNet, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newNet, PetrinetPackage.TRANSITION__NET, msgs);
+	public NotificationChain basicSetCnet(Net newCnet, NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject)newCnet, PetrinetPackage.TRANSITION__CNET, msgs);
 		return msgs;
 	}
 
@@ -127,20 +127,20 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setNet(Net newNet) {
-		if (newNet != eInternalContainer() || (eContainerFeatureID() != PetrinetPackage.TRANSITION__NET && newNet != null)) {
-			if (EcoreUtil.isAncestor(this, newNet))
+	public void setCnet(Net newCnet) {
+		if (newCnet != eInternalContainer() || (eContainerFeatureID() != PetrinetPackage.TRANSITION__CNET && newCnet != null)) {
+			if (EcoreUtil.isAncestor(this, newCnet))
 				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
 			NotificationChain msgs = null;
 			if (eInternalContainer() != null)
 				msgs = eBasicRemoveFromContainer(msgs);
-			if (newNet != null)
-				msgs = ((InternalEObject)newNet).eInverseAdd(this, PetrinetPackage.NET__TRANSITIONS, Net.class, msgs);
-			msgs = basicSetNet(newNet, msgs);
+			if (newCnet != null)
+				msgs = ((InternalEObject)newCnet).eInverseAdd(this, PetrinetPackage.NET__TRANSITIONS, Net.class, msgs);
+			msgs = basicSetCnet(newCnet, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, PetrinetPackage.TRANSITION__NET, newNet, newNet));
+			eNotify(new ENotificationImpl(this, Notification.SET, PetrinetPackage.TRANSITION__CNET, newCnet, newCnet));
 	}
 
 	/**
@@ -156,10 +156,10 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getPrep()).basicAdd(otherEnd, msgs);
 			case PetrinetPackage.TRANSITION__POSTP:
 				return ((InternalEList<InternalEObject>)(InternalEList<?>)getPostp()).basicAdd(otherEnd, msgs);
-			case PetrinetPackage.TRANSITION__NET:
+			case PetrinetPackage.TRANSITION__CNET:
 				if (eInternalContainer() != null)
 					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetNet((Net)otherEnd, msgs);
+				return basicSetCnet((Net)otherEnd, msgs);
 		}
 		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
@@ -176,8 +176,8 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 				return ((InternalEList<?>)getPrep()).basicRemove(otherEnd, msgs);
 			case PetrinetPackage.TRANSITION__POSTP:
 				return ((InternalEList<?>)getPostp()).basicRemove(otherEnd, msgs);
-			case PetrinetPackage.TRANSITION__NET:
-				return basicSetNet(null, msgs);
+			case PetrinetPackage.TRANSITION__CNET:
+				return basicSetCnet(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -190,7 +190,7 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
 		switch (eContainerFeatureID()) {
-			case PetrinetPackage.TRANSITION__NET:
+			case PetrinetPackage.TRANSITION__CNET:
 				return eInternalContainer().eInverseRemove(this, PetrinetPackage.NET__TRANSITIONS, Net.class, msgs);
 		}
 		return super.eBasicRemoveFromContainerFeature(msgs);
@@ -208,8 +208,8 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 				return getPrep();
 			case PetrinetPackage.TRANSITION__POSTP:
 				return getPostp();
-			case PetrinetPackage.TRANSITION__NET:
-				return getNet();
+			case PetrinetPackage.TRANSITION__CNET:
+				return getCnet();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -231,8 +231,8 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 				getPostp().clear();
 				getPostp().addAll((Collection<? extends Place>)newValue);
 				return;
-			case PetrinetPackage.TRANSITION__NET:
-				setNet((Net)newValue);
+			case PetrinetPackage.TRANSITION__CNET:
+				setCnet((Net)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -252,8 +252,8 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 			case PetrinetPackage.TRANSITION__POSTP:
 				getPostp().clear();
 				return;
-			case PetrinetPackage.TRANSITION__NET:
-				setNet((Net)null);
+			case PetrinetPackage.TRANSITION__CNET:
+				setCnet((Net)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -271,8 +271,8 @@ public class TransitionImpl extends NamedElementImpl implements Transition {
 				return prep != null && !prep.isEmpty();
 			case PetrinetPackage.TRANSITION__POSTP:
 				return postp != null && !postp.isEmpty();
-			case PetrinetPackage.TRANSITION__NET:
-				return getNet() != null;
+			case PetrinetPackage.TRANSITION__CNET:
+				return getCnet() != null;
 		}
 		return super.eIsSet(featureID);
 	}

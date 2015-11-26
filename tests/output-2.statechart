@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<schart:Statechart xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:schart="http://a.b.c/x/y/Z">
+  <topState name="top">
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="place1" next="//@topState/@contains.2/@contains.0"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="place4" rnext="//@topState/@contains.3/@contains.0"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:HyperEdge" name="transition1" next="//@topState/@contains.4/@contains.0/@contains.0 //@topState/@contains.4/@contains.1/@contains.0" rnext="//@topState/@contains.0/@contains.0"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:HyperEdge" name="transition2" next="//@topState/@contains.1/@contains.0" rnext="//@topState/@contains.4/@contains.0/@contains.0 //@topState/@contains.4/@contains.1/@contains.0"/>
+    </contains>
+    <contains xsi:type="schart:AND">
+      <contains xsi:type="schart:OR" name="">
+        <contains xsi:type="schart:Basic" name="place2" next="//@topState/@contains.3/@contains.0" rnext="//@topState/@contains.2/@contains.0"/>
+      </contains>
+      <contains xsi:type="schart:OR" name="">
+        <contains xsi:type="schart:Basic" name="place3" next="//@topState/@contains.3/@contains.0" rnext="//@topState/@contains.2/@contains.0"/>
+      </contains>
+    </contains>
+  </topState>
+</schart:Statechart>

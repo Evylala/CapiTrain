@@ -56,10 +56,9 @@ public class PetrinetFactoryImpl extends EFactoryImpl implements PetrinetFactory
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case PetrinetPackage.NAMED_ELEMENT: return createNamedElement();
-			case PetrinetPackage.TRANSITION: return createTransition();
-			case PetrinetPackage.PLACE: return createPlace();
 			case PetrinetPackage.NET: return createNet();
+			case PetrinetPackage.PLACE: return createPlace();
+			case PetrinetPackage.TRANSITION: return createTransition();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -70,19 +69,9 @@ public class PetrinetFactoryImpl extends EFactoryImpl implements PetrinetFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NamedElement createNamedElement() {
-		NamedElementImpl namedElement = new NamedElementImpl();
-		return namedElement;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Transition createTransition() {
-		TransitionImpl transition = new TransitionImpl();
-		return transition;
+	public Net createNet() {
+		NetImpl net = new NetImpl();
+		return net;
 	}
 
 	/**
@@ -100,9 +89,9 @@ public class PetrinetFactoryImpl extends EFactoryImpl implements PetrinetFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Net createNet() {
-		NetImpl net = new NetImpl();
-		return net;
+	public Transition createTransition() {
+		TransitionImpl transition = new TransitionImpl();
+		return transition;
 	}
 
 	/**

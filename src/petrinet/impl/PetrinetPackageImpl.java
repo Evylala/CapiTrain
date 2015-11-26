@@ -28,14 +28,14 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass namedElementEClass = null;
+	private EClass netEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass transitionEClass = null;
+	private EClass namedElementEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -49,7 +49,7 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass netEClass = null;
+	private EClass transitionEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -117,6 +117,33 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getNet() {
+		return netEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getNet_Places() {
+		return (EReference)netEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getNet_Transitions() {
+		return (EReference)netEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getNamedElement() {
 		return namedElementEClass;
 	}
@@ -128,6 +155,42 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 	 */
 	public EAttribute getNamedElement_Name() {
 		return (EAttribute)namedElementEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getPlace() {
+		return placeEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPlace_Postt() {
+		return (EReference)placeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPlace_Pret() {
+		return (EReference)placeEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPlace_Cnet() {
+		return (EReference)placeEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -162,71 +225,8 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTransition_Net() {
+	public EReference getTransition_Cnet() {
 		return (EReference)transitionEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getPlace() {
-		return placeEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPlace_Pret() {
-		return (EReference)placeEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPlace_Postt() {
-		return (EReference)placeEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getPlace_Net() {
-		return (EReference)placeEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EClass getNet() {
-		return netEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getNet_Places() {
-		return (EReference)netEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getNet_Transitions() {
-		return (EReference)netEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -257,22 +257,22 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 		isCreated = true;
 
 		// Create classes and their features
+		netEClass = createEClass(NET);
+		createEReference(netEClass, NET__PLACES);
+		createEReference(netEClass, NET__TRANSITIONS);
+
 		namedElementEClass = createEClass(NAMED_ELEMENT);
 		createEAttribute(namedElementEClass, NAMED_ELEMENT__NAME);
+
+		placeEClass = createEClass(PLACE);
+		createEReference(placeEClass, PLACE__POSTT);
+		createEReference(placeEClass, PLACE__PRET);
+		createEReference(placeEClass, PLACE__CNET);
 
 		transitionEClass = createEClass(TRANSITION);
 		createEReference(transitionEClass, TRANSITION__PREP);
 		createEReference(transitionEClass, TRANSITION__POSTP);
-		createEReference(transitionEClass, TRANSITION__NET);
-
-		placeEClass = createEClass(PLACE);
-		createEReference(placeEClass, PLACE__PRET);
-		createEReference(placeEClass, PLACE__POSTT);
-		createEReference(placeEClass, PLACE__NET);
-
-		netEClass = createEClass(NET);
-		createEReference(netEClass, NET__PLACES);
-		createEReference(netEClass, NET__TRANSITIONS);
+		createEReference(transitionEClass, TRANSITION__CNET);
 	}
 
 	/**
@@ -303,29 +303,120 @@ public class PetrinetPackageImpl extends EPackageImpl implements PetrinetPackage
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		transitionEClass.getESuperTypes().add(this.getNamedElement());
 		placeEClass.getESuperTypes().add(this.getNamedElement());
+		transitionEClass.getESuperTypes().add(this.getNamedElement());
 
 		// Initialize classes, features, and operations; add parameters
-		initEClass(namedElementEClass, NamedElement.class, "NamedElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(netEClass, Net.class, "Net", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getNet_Places(), this.getPlace(), this.getPlace_Cnet(), "places", null, 0, -1, Net.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNet_Transitions(), this.getTransition(), this.getTransition_Cnet(), "transitions", null, 0, -1, Net.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(namedElementEClass, NamedElement.class, "NamedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNamedElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(transitionEClass, Transition.class, "Transition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTransition_Prep(), this.getPlace(), this.getPlace_Pret(), "prep", null, 0, -1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTransition_Postp(), this.getPlace(), this.getPlace_Postt(), "postp", null, 0, -1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTransition_Net(), this.getNet(), this.getNet_Transitions(), "net", null, 1, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
 		initEClass(placeEClass, Place.class, "Place", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getPlace_Pret(), this.getTransition(), this.getTransition_Prep(), "pret", null, 0, -1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPlace_Postt(), this.getTransition(), this.getTransition_Postp(), "postt", null, 0, -1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPlace_Net(), this.getNet(), this.getNet_Places(), "net", null, 1, 1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPlace_Postt(), this.getTransition(), this.getTransition_Prep(), "postt", null, 0, -1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPlace_Pret(), this.getTransition(), this.getTransition_Postp(), "pret", null, 0, -1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPlace_Cnet(), this.getNet(), this.getNet_Places(), "cnet", null, 1, 1, Place.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(netEClass, Net.class, "Net", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getNet_Places(), this.getPlace(), this.getPlace_Net(), "places", null, 0, -1, Net.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getNet_Transitions(), this.getTransition(), this.getTransition_Net(), "transitions", null, 0, -1, Net.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(transitionEClass, Transition.class, "Transition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getTransition_Prep(), this.getPlace(), this.getPlace_Postt(), "prep", null, 0, -1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransition_Postp(), this.getPlace(), this.getPlace_Pret(), "postp", null, 0, -1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTransition_Cnet(), this.getNet(), this.getNet_Transitions(), "cnet", null, 1, 1, Transition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);
+
+		// Create annotations
+		// gmf
+		createGmfAnnotations();
+		// gmf.diagram
+		createGmf_1Annotations();
+		// gmf.node
+		createGmf_2Annotations();
+		// gmf.link
+		createGmf_3Annotations();
+	}
+
+	/**
+	 * Initializes the annotations for <b>gmf</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createGmfAnnotations() {
+		String source = "gmf";	
+		addAnnotation
+		  (this, 
+		   source, 
+		   new String[] {
+			 "foo", "bar"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>gmf.diagram</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createGmf_1Annotations() {
+		String source = "gmf.diagram";	
+		addAnnotation
+		  (netEClass, 
+		   source, 
+		   new String[] {
+			 "foo", "bar"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>gmf.node</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createGmf_2Annotations() {
+		String source = "gmf.node";	
+		addAnnotation
+		  (placeEClass, 
+		   source, 
+		   new String[] {
+			 "label", "name",
+			 "figure", "ellipse"
+		   });	
+		addAnnotation
+		  (transitionEClass, 
+		   source, 
+		   new String[] {
+			 "label", "name",
+			 "figure", "rectangle",
+			 "color", "0,0,0",
+			 "size", "15,50",
+			 "label.placement", "external"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>gmf.link</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createGmf_3Annotations() {
+		String source = "gmf.link";	
+		addAnnotation
+		  (getPlace_Postt(), 
+		   source, 
+		   new String[] {
+			 "target.decoration", "arrow"
+		   });	
+		addAnnotation
+		  (getTransition_Postp(), 
+		   source, 
+		   new String[] {
+			 "target.decoration", "arrow"
+		   });
 	}
 
 } //PetrinetPackageImpl

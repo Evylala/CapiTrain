@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<pnet:Net xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:pnet="http://a.b.c/x/y/Z">
+  <places name="place1" postt="//@transitions.0"/>
+  <places name="place2" postt="//@transitions.1" pret="//@transitions.0"/>
+  <places name="place4" pret="//@transitions.1"/>
+  <transitions name="transition1" prep="//@places.0" postp="//@places.1"/>
+  <transitions name="transition2" prep="//@places.1" postp="//@places.2"/>
+</pnet:Net>

@@ -82,7 +82,7 @@ public class NetImpl extends MinimalEObjectImpl.Container implements Net {
 	 */
 	public EList<Place> getPlaces() {
 		if (places == null) {
-			places = new EObjectContainmentWithInverseEList<Place>(Place.class, this, PetrinetPackage.NET__PLACES, PetrinetPackage.PLACE__NET);
+			places = new EObjectContainmentWithInverseEList<Place>(Place.class, this, PetrinetPackage.NET__PLACES, PetrinetPackage.PLACE__CNET);
 		}
 		return places;
 	}
@@ -94,7 +94,7 @@ public class NetImpl extends MinimalEObjectImpl.Container implements Net {
 	 */
 	public EList<Transition> getTransitions() {
 		if (transitions == null) {
-			transitions = new EObjectContainmentWithInverseEList<Transition>(Transition.class, this, PetrinetPackage.NET__TRANSITIONS, PetrinetPackage.TRANSITION__NET);
+			transitions = new EObjectContainmentWithInverseEList<Transition>(Transition.class, this, PetrinetPackage.NET__TRANSITIONS, PetrinetPackage.TRANSITION__CNET);
 		}
 		return transitions;
 	}
