@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<schart:Statechart xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:schart="http://a.b.c/x/y/Z">
+  <topState name="top">
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="patient arrived" next="//@topState/@contains.8/@contains.0 //@topState/@contains.9/@contains.0"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="patient registered in HIS" next="//@topState/@contains.10/@contains.0 //@topState/@contains.11/@contains.0 //@topState/@contains.15/@contains.0" rnext="//@topState/@contains.8/@contains.0 //@topState/@contains.9/@contains.0"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="patient walking to dermatology" next="//@topState/@contains.13/@contains.0" rnext="//@topState/@contains.11/@contains.0"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="photographs ordered" next="//@topState/@contains.12/@contains.0" rnext="//@topState/@contains.11/@contains.0 //@topState/@contains.10/@contains.0"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="patient in hall" next="//@topState/@contains.12/@contains.0" rnext="//@topState/@contains.10/@contains.0"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="take pictures" next="//@topState/@contains.16/@contains.0" rnext="//@topState/@contains.14/@contains.0"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="waiting for photographer" next="//@topState/@contains.14/@contains.0" rnext="//@topState/@contains.13/@contains.0 //@topState/@contains.12/@contains.0"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="dermatologist session" rnext="//@topState/@contains.17/@contains.0"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:HyperEdge" name="eID signin" next="//@topState/@contains.1/@contains.0" rnext="//@topState/@contains.0/@contains.0"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:HyperEdge" name="secretary signin" next="//@topState/@contains.1/@contains.0" rnext="//@topState/@contains.0/@contains.0"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:HyperEdge" name="needs pics, cannot walk" next="//@topState/@contains.3/@contains.0 //@topState/@contains.18/@contains.0/@contains.0 //@topState/@contains.4/@contains.0" rnext="//@topState/@contains.1/@contains.0"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:HyperEdge" name="needs pics, can walk" next="//@topState/@contains.2/@contains.0 //@topState/@contains.3/@contains.0 //@topState/@contains.18/@contains.0/@contains.0" rnext="//@topState/@contains.1/@contains.0"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:HyperEdge" name="nurse picks up patient" next="//@topState/@contains.6/@contains.0" rnext="//@topState/@contains.3/@contains.0 //@topState/@contains.4/@contains.0"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:HyperEdge" name="patient is sent to photographer" next="//@topState/@contains.6/@contains.0" rnext="//@topState/@contains.2/@contains.0"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:HyperEdge" name="begin photography session" next="//@topState/@contains.5/@contains.0" rnext="//@topState/@contains.6/@contains.0"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:HyperEdge" name="patient has high quality pics already" next="//@topState/@contains.18/@contains.0/@contains.0 //@topState/@contains.18/@contains.1/@contains.0" rnext="//@topState/@contains.1/@contains.0"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:HyperEdge" name="end photography session" next="//@topState/@contains.18/@contains.1/@contains.0" rnext="//@topState/@contains.5/@contains.0"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:HyperEdge" name="dermatologist calls in patient" next="//@topState/@contains.7/@contains.0" rnext="//@topState/@contains.18/@contains.0/@contains.0 //@topState/@contains.18/@contains.1/@contains.0"/>
+    </contains>
+    <contains xsi:type="schart:AND">
+      <contains xsi:type="schart:OR" name="">
+        <contains xsi:type="schart:Basic" name="biopsy ordered" next="//@topState/@contains.17/@contains.0" rnext="//@topState/@contains.10/@contains.0 //@topState/@contains.11/@contains.0 //@topState/@contains.15/@contains.0"/>
+      </contains>
+      <contains xsi:type="schart:OR" name="">
+        <contains xsi:type="schart:Basic" name="waiting for dermatologist" next="//@topState/@contains.17/@contains.0" rnext="//@topState/@contains.15/@contains.0 //@topState/@contains.16/@contains.0"/>
+      </contains>
+    </contains>
+  </topState>
+</schart:Statechart>

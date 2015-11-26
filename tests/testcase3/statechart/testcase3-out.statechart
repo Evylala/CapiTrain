@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<schart:Statechart xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:schart="http://a.b.c/x/y/Z">
+  <topState name="top">
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="patient arrived"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="patient registered in HIS"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="patient walking to dermatology"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="photographs ordered"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="biopsy ordered"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="patient in hall"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="take pictures"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="waiting for photographer"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="waiting for dermatologist"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:Basic" name="dermatologist session"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:HyperEdge" name="eID signin"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:HyperEdge" name="secretary signin"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:HyperEdge" name="needs pics, cannot walk"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:HyperEdge" name="needs pics, can walk"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:HyperEdge" name="nurse picks up patient"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:HyperEdge" name="patient is sent to photographer"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:HyperEdge" name="begin photography session"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:HyperEdge" name="patient has high quality pics already"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:HyperEdge" name="end photography session"/>
+    </contains>
+    <contains xsi:type="schart:OR" name="">
+      <contains xsi:type="schart:HyperEdge" name="dermatologist calls in patient"/>
+    </contains>
+  </topState>
+</schart:Statechart>
