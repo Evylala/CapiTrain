@@ -1,0 +1,72 @@
+-- @path statechart=/CapiTrain/EMF/statechart.ecore
+-- @path petrinet=/CapiTrain/EMF/petrinet.ecore
+
+module OR_1_Petrinet2Statechart;
+
+create OUT: statechart refining schartIN : statechart, pnetIN: petrinet;
+
+rule Petrinet2Statechart {
+	from 
+		h1: statechart!HyperEdge (
+				thisModule.isOr(h1)
+			)
+	to
+		h2: statechart!HyperEdge (
+			name <- 'isOr'
+		)
+}
+
+helper def: listOfOr(): Sequence(statechart!HyperEdge) =
+	
+;
+
+helper def: isOr(h: statechart!HyperEdge ): Boolean =
+	let transition: petrinet!Transition = petrinet!Transition->allInstances()->select(t | t.name = h.name).first() 
+	in let allTransitions: Sequence(petrinet!Transition) = petrinet!Transition->allInstances()->asSequence()
+	in
+		if transition.oclIsUndefined() = false then
+			if transition.prep->size() = 1 and transition.postp->size() = 1 then
+				if allTransitions->iterate(t; name: petrinet!Place = transition.prep->first().name |
+						if t.prep->exists(p | p.name = name) then
+							false
+						else
+							true
+						endif
+					) or
+					allTransitions->iterate(t; name: petrinet!Place = transition.postp->first().name |
+						if t.prep->exists(p | p.name = name) then
+							false
+						else
+							true
+						endif
+					) then
+					
+					if allTransitions->iterate(t; name: petrinet!Place = transition.prep->first().name |
+						if t.postp->exists(p | p.name = name) then
+							false
+						else
+							true
+						endif
+					) or
+					allTransitions->iterate(t; name: petrinet!Place = transition.postp->first().name |
+						if t.postp->exists(p | p.name = name) then
+							false
+						else
+							true
+						endif
+					) then
+						true
+					else
+						false
+					endif
+				else
+					false
+				endif
+			else
+				false
+			endif
+		else
+			false
+		endif	
+;
+		
