@@ -13,11 +13,14 @@ rule Petrinet2StatechartAndRuleNext {
 	to
 		h2: statechart!HyperEdge (
 		),
-		a: statechart!AND (
+		o: statechart!OR (
 			rcontains <- if h1.rcontains.rcontains.oclIsKindOf(statechart!Compound)
 				then h1.rcontains.rcontains
 				else OclUndefined
 				endif,
+			contains <- a
+		),
+		a: statechart!AND (
 			contains <- h1.getNextCompounds()
 		)
 }
