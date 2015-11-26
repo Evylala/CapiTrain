@@ -1,0 +1,16 @@
+-- @atlcompiler atl2010
+-- @path statechart=/CapiTrain/EMF/statechart.ecore
+-- @path petrinet=/CapiTrain/EMF/petrinet.ecore
+
+module Petrinet2Statechart;
+
+create pnetOut: petrinet refining pnetInput: petrinet;
+
+rule dropTransition {
+	from
+		t1: petrinet!Transition (
+			t1.name = 'toDrop'
+		)
+	to
+		drop
+}

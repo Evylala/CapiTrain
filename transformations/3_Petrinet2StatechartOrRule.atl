@@ -1,0 +1,92 @@
+-- @atlcompiler atl2010
+-- @path statechart=/CapiTrain/EMF/statechart.ecore
+-- @path petrinet=/CapiTrain/EMF/petrinet.ecore
+
+module Petrinet2Statechart;
+
+create schartOut: statechart refining schartInput : statechart, pnetInput: petrinet;
+
+rule modifyOr {
+	from
+		o1: statechart!OR (
+			if not thisModule.getHyperEdgeOfFirstOr().oclIsUndefined() then
+				thisModule.getHyperEdgeOfFirstOr().debug().rcontains = o1
+			else
+				false
+			endif
+		)
+	to
+		o2: statechart!OR (
+			contains <- o1.getListOfBiggestOr()
+				
+		)
+		
+}
+rule dropOr {
+	from 
+		o: statechart!OR (
+				o.contains.isEmpty()
+			)
+	to
+		drop
+}
+
+helper def: getHyperEdgeOfFirstOr(): statechart!HyperEdge =
+	let allHyperEdges: Sequence(statechart!HyperEdge) = statechart!HyperEdge->allInstances()->asSequence() in
+		allHyperEdges->select(h | thisModule.isOr(h))->first()
+;
+
+helper def: isOr(h: statechart!HyperEdge ): Boolean =
+	let transition: petrinet!Transition = petrinet!Transition->allInstances()->select(t | t.name = h.name).first() 
+	in let allTransitions: Sequence(petrinet!Transition) = petrinet!Transition->allInstances()->asSequence()
+	in
+		if transition.oclIsUndefined() = false then
+			if transition.prep->size() = 1 and transition.postp->size() = 1 then
+				thisModule.helperPrep(transition) and thisModule.helperPost(transition)
+			else
+				false
+			endif
+		else
+			false
+		endif	
+;
+	
+helper def: helperPrep(transition: petrinet!Transition): Boolean =
+	let allTransitions: Sequence(petrinet!Transition) = petrinet!Transition->allInstances()->asSequence() in
+	allTransitions->iterate(t; ret: Boolean = false |
+		not t.prep->exists(p | p.name = transition.prep->first().name)
+	) or
+	allTransitions->iterate(t; ret: Boolean = transition.postp->first().name |
+		not t.prep->exists(p | p.name = transition.postp->first().name)
+	)	
+;
+	
+helper def: helperPost(transition: petrinet!Transition): Boolean =
+	let allTransitions: Sequence(petrinet!Transition) = petrinet!Transition->allInstances()->asSequence() in
+	allTransitions->iterate(t; ret: Boolean = false|
+		not t.postp->exists(p | p.name = transition.prep->first().name )
+	) or
+	allTransitions->iterate(t; ret: Boolean = false |
+		not t.postp->exists(p | p.name = transition.postp->first().name)
+	)
+;
+
+helper context statechart!OR def: getRNextBiggestOR(): statechart!OR =
+	thisModule.getCompoundIn(self.rcontains, self.contains.first().rnext.first())
+;
+
+helper context statechart!OR def: getNextBiggestOR(): statechart!OR =
+	thisModule.getCompoundIn(self.rcontains, self.contains.first().next.first())
+;
+
+helper context statechart!OR def: getListOfBiggestOr(): Sequence(statechart!State) =
+		self.getRNextBiggestOR().contains->union(self.getNextBiggestOR().contains)
+	;
+	
+helper def: getCompoundIn(current: statechart!Compound, state :statechart!State): statechart!Compound = 
+	if state.rcontains = current
+	then state
+	else thisModule.getCompoundIn(current, state.rcontains)
+	endif
+;
+		

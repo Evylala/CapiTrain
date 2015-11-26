@@ -1,0 +1,95 @@
+-- @atlcompiler atl2010
+-- @path statechart=/CapiTrain/EMF/statechart.ecore
+-- @path petrinet=/CapiTrain/EMF/petrinet.ecore
+
+module Petrinet2Statechart;
+
+create pnetOut: petrinet refining pnetInput: petrinet;
+
+rule modifyPreviousTransition {
+	from
+		t1: petrinet!Transition (
+			if not thisModule.getTransitionOfFirstOr().oclIsUndefined() then
+				thisModule.getTransitionOfFirstOr().prep->first().pret->includes(t1)
+			else
+				false
+			endif
+		)
+	to
+		t2: petrinet!Transition (
+			postp <- 
+			if not thisModule.getTransitionOfFirstOr().oclIsUndefined() then
+				 thisModule.getTransitionOfFirstOr().postp->first()
+			else
+				OclUndefined
+			endif
+		)
+}
+
+rule modifyTransitionOR {
+	from
+		t1: petrinet!Transition (
+			if not thisModule.getTransitionOfFirstOr().oclIsUndefined() then
+				thisModule.getTransitionOfFirstOr().name = t1.name
+			else
+				false
+			endif
+		)
+	to
+		t2: petrinet!Transition (
+			name <- 'toDrop',
+			postp <- Set{}
+		)
+}
+
+rule dropBasic {
+	from
+		p1: petrinet!Place (
+			if not thisModule.getTransitionOfFirstOr().oclIsUndefined() then
+				thisModule.getTransitionOfFirstOr().prep.first().name = p1.name
+			else
+				false
+			endif
+		)
+	to
+		drop
+}
+
+helper def: getTransitionOfFirstOr(): petrinet!Transition =
+	let allTransitions: Sequence(petrinet!Transition) = petrinet!Transition->allInstances()->asSequence() in
+		allTransitions->select(t | thisModule.isOr(t))->first()
+;
+
+helper def: isOr(transition: petrinet!Transition ): Boolean =
+	let allTransitions: Sequence(petrinet!Transition) = petrinet!Transition->allInstances()->asSequence()
+	in
+		if transition.oclIsUndefined() = false then
+			if transition.prep->size() = 1 and transition.postp->size() = 1 then
+				thisModule.helperPrep(transition) and thisModule.helperPost(transition)
+			else
+				false
+			endif
+		else
+			false
+		endif	
+;
+	
+helper def: helperPrep(transition: petrinet!Transition): Boolean =
+	let allTransitions: Sequence(petrinet!Transition) = petrinet!Transition->allInstances()->asSequence() in
+	allTransitions->iterate(t; ret: Boolean = false |
+		not t.prep->exists(p | p.name = transition.prep->first().name)
+	) or
+	allTransitions->iterate(t; ret: Boolean = transition.postp->first().name |
+		not t.prep->exists(p | p.name = transition.postp->first().name)
+	)		
+;
+	
+helper def: helperPost(transition: petrinet!Transition): Boolean =
+	let allTransitions: Sequence(petrinet!Transition) = petrinet!Transition->allInstances()->asSequence() in
+	allTransitions->iterate(t; ret: Boolean = false|
+		not t.postp->exists(p | p.name = transition.prep->first().name )
+	) or
+	allTransitions->iterate(t; ret: Boolean = false |
+		not t.postp->exists(p | p.name = transition.postp->first().name)
+	)
+;
