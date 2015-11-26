@@ -1,0 +1,17 @@
+-- @atlcompiler atl2010
+-- @path statechart=/CapiTrain/EMF/statechart.ecore
+-- @path petrinet=/CapiTrain/EMF/petrinet.ecore
+
+
+module Petrinet2Statechart;
+
+create schartOut: statechart refining schartInput: statechart;
+
+rule dropOr {
+	from 
+		o: statechart!OR (
+				o.contains.isEmpty()
+			)
+	to
+		drop
+}
