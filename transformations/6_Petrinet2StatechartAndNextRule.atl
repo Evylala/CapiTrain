@@ -45,23 +45,29 @@ helper def: getNextAndNames(): Sequence(String) =
 
 helper context petrinet!Transition def: isPostpAndTransition(): Boolean = 
 	if self.postp.size() > 1
-	then thisModule.posttEquivalents(self.name, self.postp) and thisModule.posttEquivalents(self.name, self.postp)
+	then (thisModule.posttEquivalents(self.name, self.postp) and thisModule.pretEquivalents(self.name, self.postp))
+		or (thisModule.nextEmpty(self.postp) and thisModule.pretEquivalents(self.name, self.postp))
 	else false
 	endif
 ;
 	
+helper def: nextEmpty(postp: Sequence(petrinet!Place)): Boolean =
+	postp -> iterate(p; ret: Boolean = true |
+		ret and p.postt.size() = 0
+	);
+
 helper def: posttEquivalents(name: String, postp: Sequence(petrinet!Place)): Boolean = 
-	postp -> iterate(p; ret: Boolean = false |
-		if (postp.first().postt.size() = 1 and p.postt.size() = 1)
-		then (postp.first().postt.first().name = p.postt.first().name)
-		else false
+	postp -> iterate(p; ret: Boolean = true |
+		if p.postt.size() = 1
+		then ret and (postp.first().postt.first().name = p.postt.first().name)
+		else ret and false
 		endif	
 	);
 	
 helper def: pretEquivalents(name: String, postp: Sequence(petrinet!Place)): Boolean = 
-	postp -> iterate(p; ret: Boolean = false |
+	postp -> iterate(p; ret: Boolean = true |
 		if (postp.first().pret.size() = 1 and p.pret.size() = 1)
-		then (postp.first().pret.first().name = p.pret.first().name)
-		else false
+		then ret and (postp.first().pret.first().name = p.pret.first().name)
+		else ret and false
 		endif	
 	);

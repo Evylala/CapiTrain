@@ -1,0 +1,73 @@
+-- @path statechart=/CapiTrain/EMF/statechart.ecore
+-- @path petrinet=/CapiTrain/EMF/petrinet.ecore
+
+module Petrinet2Statechart;
+
+create schartOut: statechart refining schartInput : statechart, pnetInput: petrinet;
+
+rule Petrinet2StatechartAndRuleRNext {
+	from 
+		h1: statechart!HyperEdge (
+			thisModule.getRNextAndNames().first() = h1.name
+		)
+	to
+		h2: statechart!HyperEdge (
+		),
+		o: statechart!OR (
+			rcontains <- if h1.rcontains.rcontains.oclIsKindOf(statechart!Compound)
+				then h1.rcontains.rcontains
+				else OclUndefined
+				endif,
+			contains <- a
+		),
+		a: statechart!AND (
+			contains <- h1.getRNextCompounds()
+		)
+}
+
+helper context statechart!HyperEdge def: getRNextCompounds(): Sequence(statechart!Compound) =
+	self.rnext -> collect(s | if self.rcontains.contains.size() = 1
+		then s.getCompoundIn(self.rcontains.rcontains)
+		else s.getCompoundIn(self.rcontains)
+		endif)
+	;
+
+helper context statechart!State def: getCompoundIn(current: statechart!Compound): statechart!Compound = 
+	if self.rcontains = current
+	then self
+	else self.rcontains.getCompoundIn(current)
+	endif
+	;
+
+helper def: getRNextAndNames(): Sequence(String) =
+	petrinet!Transition -> allInstances() -> select(t | t.isPrepAndTransition()) 
+	-> collect(t | t.name);
+
+helper context petrinet!Transition def: isPrepAndTransition(): Boolean = 
+	if self.prep.size() > 1
+	then (thisModule.posttEquivalents(self.name, self.prep) and thisModule.pretEquivalents(self.name, self.prep))
+		or (thisModule.rnextEmpty(self.prep) and thisModule.pretEquivalents(self.name, self.prep))
+	else false
+	endif
+;
+	
+helper def: rnextEmpty(prep: Sequence(petrinet!Place)): Boolean =
+	prep -> iterate(p; ret: Boolean = true |
+		ret and p.postt.size() = 0
+	);
+	
+helper def: posttEquivalents(name: String, prep: Sequence(petrinet!Place)): Boolean = 
+	prep -> iterate(p; ret: Boolean = true |
+		if p.postt.size() = 1
+		then ret and (prep.first().postt.first().name = p.postt.first().name)
+		else ret and false
+		endif	
+	);
+	
+helper def: pretEquivalents(name: String, prep: Sequence(petrinet!Place)): Boolean = 
+	prep -> iterate(p; ret: Boolean = true |
+		if (prep.first().pret.size() = 1 and p.pret.size() = 1)
+		then ret and (prep.first().pret.first().name = p.pret.first().name)
+		else ret and false
+		endif	
+	);

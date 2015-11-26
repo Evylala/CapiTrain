@@ -1,0 +1,65 @@
+-- @atlcompiler atl2010
+-- @path statechart=/CapiTrain/EMF/statechart.ecore
+-- @path petrinet=/CapiTrain/EMF/petrinet.ecore
+
+module Petrinet2Statechart;
+
+create pnetOut: petrinet refining pnetInput: petrinet;
+
+-- drop the places
+rule Petrinet2PetrinetAndRuleRNext {
+	from
+		p: petrinet!Place  (
+			thisModule.getPlaceNamesToDrop().includes(p.name)
+		)
+	to
+		drop
+} 
+
+helper def: getPlaceNamesToDrop(): Sequence(String) =
+	if not thisModule.getPlacesInAnd().oclIsUndefined()
+	then thisModule.getPlacesInAnd() -> select(p | not (p.name = petrinet!Transition -> allInstances() -> select(t | 
+				t.name = thisModule.getRNextAndNames().first()).first().prep.first().name))
+		-> collect(p | p.name)
+	else OclUndefined
+	endif
+	;
+
+helper def: getPlacesInAnd(): Sequence(petrinet!Place) =
+	petrinet!Place -> allInstances() 
+		-> select(p | p.postt.size() = 1)
+		-> select(p | p.postt.first().name = thisModule.getRNextAndNames().first())
+	;
+
+helper def: getRNextAndNames(): Sequence(String) =
+	petrinet!Transition -> allInstances() -> select(t | t.isPrepAndTransition()) 
+	-> collect(t | t.name);
+
+helper context petrinet!Transition def: isPrepAndTransition(): Boolean = 
+	if self.prep.size() > 1
+	then (thisModule.posttEquivalents(self.name, self.prep) and thisModule.pretEquivalents(self.name, self.prep))
+		or (thisModule.rnextEmpty(self.prep) and thisModule.pretEquivalents(self.name, self.prep))
+	else false
+	endif
+;
+	
+helper def: rnextEmpty(prep: Sequence(petrinet!Place)): Boolean =
+	prep -> iterate(p; ret: Boolean = true |
+		ret and p.postt.size() = 0
+	);
+	
+helper def: posttEquivalents(name: String, prep: Sequence(petrinet!Place)): Boolean = 
+	prep -> iterate(p; ret: Boolean = true |
+		if p.postt.size() = 1
+		then ret and (prep.first().postt.first().name = p.postt.first().name)
+		else ret and false
+		endif	
+	);
+	
+helper def: pretEquivalents(name: String, prep: Sequence(petrinet!Place)): Boolean = 
+	prep -> iterate(p; ret: Boolean = true |
+		if (prep.first().pret.size() = 1 and p.pret.size() = 1)
+		then ret and (prep.first().pret.first().name = p.pret.first().name)
+		else ret and false
+		endif	
+	);

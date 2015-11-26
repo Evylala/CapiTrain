@@ -10,7 +10,7 @@ rule modifyOr {
 	from
 		o1: statechart!OR (
 			if not thisModule.getHyperEdgeOfFirstOr().oclIsUndefined() then
-				thisModule.getHyperEdgeOfFirstOr().debug().rcontains = o1
+				thisModule.getHyperEdgeOfFirstOr().rcontains = o1
 			else
 				false
 			endif
