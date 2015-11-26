@@ -3,7 +3,7 @@
 
 module Petrinet2Statechart;
 
-create OUT: statechart refining schartIN : statechart, input: petrinet;
+create schartOut: statechart refining schartInput : statechart, pnetInput: petrinet;
 
 rule Petrinet2Statechart {
 	from 

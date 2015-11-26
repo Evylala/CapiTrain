@@ -1,0 +1,61 @@
+-- @path statechart=/CapiTrain/EMF/statechart.ecore
+-- @path petrinet=/CapiTrain/EMF/petrinet.ecore
+
+module Petrinet2Statechart;
+
+create schartOut: statechart refining schartInput : statechart, pnetInput: petrinet;
+
+rule Petrinet2StatechartAndRuleNext {
+	from 
+		h1: statechart!HyperEdge (
+			thisModule.getNextAndNames().includes(h1.name)
+		)
+	to
+		h2: statechart!HyperEdge (
+		),
+		a: statechart!AND (
+			rcontains <- if h1.rcontains.rcontains.oclIsKindOf(statechart!Compound)
+				then h1.rcontains.rcontains
+				else OclUndefined
+				endif,
+			contains <- h1.getNextCompounds()
+		)
+}
+
+helper context statechart!HyperEdge def: getNextCompounds(): Sequence(statechart!Compound) =
+	self.next -> collect(s | if self.rcontains.contains.size() = 1
+		then s.getCompoundIn(self.rcontains.rcontains)
+		else s.getCompoundIn(self.rcontains)
+		endif)
+	;
+
+helper context statechart!State def: getCompoundIn(current: statechart!Compound): statechart!Compound = 
+	if self.rcontains = current
+	then self
+	else self.rcontains.getCompoundIn(current)
+	endif
+	;
+
+helper def: getNextAndNames(): Sequence(String) =
+	petrinet!Transition -> allInstances() -> select(t | t.isPostpAndTransition()) 
+	-> collect(t | t.name);
+
+helper context petrinet!Transition def: isPostpAndTransition(): Boolean = 
+	if self.postp.size() = 2 
+	then if thisModule.posttEquivalents(self.postp.at(1), self.postp.at(2))
+		then true
+		else false
+		endif
+	else false
+	endif
+;
+	
+helper def: posttEquivalents(p1: petrinet!Place, p2: petrinet!Place): Boolean = 
+	if p1.postt.size() = 1 and p2.postt.size() = 1
+	then if p1.postt.first().name = p2.postt.first().name
+		then true
+		else false
+		endif
+	else false
+	endif
+	;

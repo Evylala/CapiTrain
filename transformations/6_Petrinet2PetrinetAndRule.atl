@@ -1,0 +1,13 @@
+-- @path statechart=/CapiTrain/EMF/statechart.ecore
+-- @path petrinet=/CapiTrain/EMF/petrinet.ecore
+
+module Petrinet2Statechart;
+
+create pnetOut: petrinet refining pnetInput: petrinet;
+
+rule Petrinet2PetrinetAndRuleNext {
+	from
+		t: petrinet!Transition 
+	to
+		t2: petrinet!Transition ()
+}

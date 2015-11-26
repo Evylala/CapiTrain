@@ -113,7 +113,7 @@
 		<constant value="__matchPetrinet2Statechart"/>
 		<constant value="Basic"/>
 		<constant value="statechart"/>
-		<constant value="schartIN"/>
+		<constant value="schartInput"/>
 		<constant value="TransientLink"/>
 		<constant value="NTransientLink;.setRule(MATL!Rule;):V"/>
 		<constant value="b1"/>

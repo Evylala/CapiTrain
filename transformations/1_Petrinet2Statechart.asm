@@ -49,7 +49,7 @@
 		<constant value="__matchPnet2Statechart"/>
 		<constant value="Net"/>
 		<constant value="petrinet"/>
-		<constant value="input"/>
+		<constant value="pnetInput"/>
 		<constant value="MMOF!Classifier;.allInstancesFrom(S):QJ"/>
 		<constant value="TransientLink"/>
 		<constant value="NTransientLink;.setRule(MATL!Rule;):V"/>
