@@ -76,20 +76,20 @@ helper def: isOr(transition: petrinet!Transition ): Boolean =
 	
 helper def: helperPrep(transition: petrinet!Transition): Boolean =
 	let allTransitions: Sequence(petrinet!Transition) = petrinet!Transition->allInstances()->asSequence() in
-	allTransitions->iterate(t; ret: Boolean = false |
-		not t.prep->exists(p | p.name = transition.prep->first().name)
+	allTransitions->iterate(t; ret: Boolean = true |
+		not ret and t.prep->exists(p | p.name = transition.prep->first().name)
 	) or
-	allTransitions->iterate(t; ret: Boolean = transition.postp->first().name |
-		not t.prep->exists(p | p.name = transition.postp->first().name)
+	allTransitions->iterate(t; ret: Boolean = true |
+		not ret and t.prep->exists(p | p.name = transition.postp->first().name)
 	)		
 ;
 	
 helper def: helperPost(transition: petrinet!Transition): Boolean =
 	let allTransitions: Sequence(petrinet!Transition) = petrinet!Transition->allInstances()->asSequence() in
-	allTransitions->iterate(t; ret: Boolean = false|
-		not t.postp->exists(p | p.name = transition.prep->first().name )
+	allTransitions->iterate(t; ret: Boolean = true |
+		not ret and t.postp->exists(p | p.name = transition.prep->first().name )
 	) or
-	allTransitions->iterate(t; ret: Boolean = false |
-		not t.postp->exists(p | p.name = transition.postp->first().name)
+	allTransitions->iterate(t; ret: Boolean = true |
+		not ret and t.postp->exists(p | p.name = transition.postp->first().name)
 	)
 ;
