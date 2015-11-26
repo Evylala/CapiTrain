@@ -3,21 +3,72 @@
 
 module OR_1_Petrinet2Statechart;
 
-create OUT: statechart refining schartIN : statechart, pnetIN: petrinet;
+create schartOut: statechart refining schartInput : statechart, pnetInput: petrinet;
+
 
 rule Petrinet2Statechart {
 	from 
 		h1: statechart!HyperEdge (
-				thisModule.isOr(h1)
+				thisModule.getHyperEdgeOfFirstOr().name = h1.name
 			)
 	to
 		h2: statechart!HyperEdge (
-			name <- 'isOr'
+			rcontains <- thisModule.getHyperEdgeOfFirstOr().rnext.first().rcontains
 		)
 }
 
-helper def: listOfOr(): Sequence(statechart!HyperEdge) =
-	
+rule modifyBasic {
+	from
+		b1: statechart!Basic (
+			if not thisModule.isInAnd(b1) then
+				thisModule.getHyperEdgeOfFirstOr().next.first().name = b1.name
+			else 
+				false
+			endif
+		)
+	to
+		b2: statechart!Basic (
+			rcontains <- 
+			if thisModule.isInAnd(thisModule.getHyperEdgeOfFirstOr().rnext.first()) then
+				thisModule.getHyperEdgeOfFirstOr().rnext.first().rcontains.rcontains.rcontains
+			else
+				thisModule.getHyperEdgeOfFirstOr().rnext.first().rcontains
+			endif
+		)
+}
+
+rule modifyAnd {
+	from
+		a1: statechart!AND (
+			if thisModule.isInAnd(thisModule.getHyperEdgeOfFirstOr().next.first()) then
+				thisModule.getHyperEdgeOfFirstOr().next.first().rcontains.rcontains.name = a1.name
+			else
+				false
+			endif
+		)
+	to
+		a2: statechart!AND (
+			rcontains <- 
+				if thisModule.isInAnd(thisModule.getHyperEdgeOfFirstOr().rnext.first()) then
+					thisModule.getHyperEdgeOfFirstOr().rnext.first().rcontains.rcontains.rcontains
+				else
+					thisModule.getHyperEdgeOfFirstOr().rnext.first().rcontains
+				endif
+		)
+}
+
+--rule dropOr {
+--	from 
+--		o: statechart!OR (
+--				o.contains.isEmpty()
+--			)
+--	to
+--		drop
+--}
+
+helper def: getHyperEdgeOfFirstOr(): statechart!HyperEdge =
+	let allHyperEdges: Sequence(statechart!HyperEdge) = statechart!HyperEdge->allInstances()->asSequence() in
+		allHyperEdges->select(h | thisModule.isOr(h))->first()
 ;
 
 helper def: isOr(h: statechart!HyperEdge ): Boolean =
@@ -26,39 +77,8 @@ helper def: isOr(h: statechart!HyperEdge ): Boolean =
 	in
 		if transition.oclIsUndefined() = false then
 			if transition.prep->size() = 1 and transition.postp->size() = 1 then
-				if allTransitions->iterate(t; name: petrinet!Place = transition.prep->first().name |
-						if t.prep->exists(p | p.name = name) then
-							false
-						else
-							true
-						endif
-					) or
-					allTransitions->iterate(t; name: petrinet!Place = transition.postp->first().name |
-						if t.prep->exists(p | p.name = name) then
-							false
-						else
-							true
-						endif
-					) then
-					
-					if allTransitions->iterate(t; name: petrinet!Place = transition.prep->first().name |
-						if t.postp->exists(p | p.name = name) then
-							false
-						else
-							true
-						endif
-					) or
-					allTransitions->iterate(t; name: petrinet!Place = transition.postp->first().name |
-						if t.postp->exists(p | p.name = name) then
-							false
-						else
-							true
-						endif
-					) then
-						true
-					else
-						false
-					endif
+				if thisModule.helperPrep(transition) and thisModule.helperPost(transition) then
+					true
 				else
 					false
 				endif
@@ -69,4 +89,49 @@ helper def: isOr(h: statechart!HyperEdge ): Boolean =
 			false
 		endif	
 ;
+	
+helper def: helperPrep(transition: petrinet!Transition): Boolean =
+	let allTransitions: Sequence(petrinet!Transition) = petrinet!Transition->allInstances()->asSequence() in
+	allTransitions->iterate(t; name: petrinet!Place = transition.prep->first().name |
+		if t.prep->exists(p | p.name = name) then
+			false
+		else
+			true
+		endif
+	) or
+	allTransitions->iterate(t; name: petrinet!Place = transition.postp->first().name |
+		if t.prep->exists(p | p.name = name) then
+			false
+		else
+			true
+		endif
+	)	
+;
+	
+helper def: helperPost(transition: petrinet!Transition): Boolean =
+	let allTransitions: Sequence(petrinet!Transition) = petrinet!Transition->allInstances()->asSequence() in
+	allTransitions->iterate(t; name: petrinet!Place = transition.prep->first().name |
+		if t.postp->exists(p | p.name = name) then
+			false
+		else
+			true
+		endif
+	) or
+	allTransitions->iterate(t; name: petrinet!Place = transition.postp->first().name |
+		if t.postp->exists(p | p.name = name) then
+			false
+		else
+			true
+		endif
+	)
+;
+	
+helper def: isInAnd(b: statechart!Basic): Boolean =
+	if b.rcontains.rcontains->oclIsTypeOf(statechart!AND) and b.rcontains.rcontains.name <> 'top' then
+		true
+	else
+		false
+	endif
+;
+
 		
